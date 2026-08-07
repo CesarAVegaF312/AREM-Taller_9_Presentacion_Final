@@ -29,6 +29,17 @@ Describir brevemente el propósito del trabajo realizado con el cliente, los ret
 - Desacoplar [ejemplo: módulo de notificaciones para facilitar escalabilidad].
 - Cumplir con [ejemplo: políticas de retención de datos según la normatividad vigente].
 
+## 🗺️ Plan de Implementación (resumen)
+
+| Fase | Qué se implementa | Duración estimada |
+|---|---|---|
+| Quick win | | |
+| Corto plazo | | |
+| Mediano plazo | | |
+| Largo plazo | | |
+
+_Ver el detalle completo, con la relación de cada fase a los riesgos identificados en el curso, en [`entrega/plan-implementacion.md`](../plantillas/plantilla_plan_implementacion.md)._
+
 ## 💡 Reflexión Final
 
 Este ejercicio permitió al equipo aplicar de manera práctica los conceptos de arquitectura empresarial en un entorno real, desarrollando habilidades de análisis estructurado, modelado, documentación y comunicación ejecutiva de soluciones tecnológicas.
