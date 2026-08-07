@@ -54,4 +54,4 @@ Cite aquí cualquier fuente sobre gestión de portafolios de proyectos, prioriza
 
 ---
 
-_Este documento hace parte de la entrega final del Taller 8 del curso AREM (Arquitectura Empresarial) - Universidad de La Sabana._
+_Este documento hace parte de la entrega final del Taller 9 del curso AREM (Arquitectura Empresarial) - Universidad de La Sabana._

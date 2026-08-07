@@ -1,4 +1,4 @@
-# 🛠️ Taller 8: Simulación de Comité de Arquitectura
+# 🛠️ Taller 9: Simulación de Comité de Arquitectura
 
 ## 🎯 Objetivo
 
@@ -56,7 +56,7 @@ Después de la presentación, el equipo debe:
 ## 📁 Estructura esperada del repositorio
 
 ```text
-taller-08-presentacion-final/
+taller-09-presentacion-final/
 ├── README.md
 ├── clase/
 │   └── guia_paso_a_paso_presentacion.md   # De qué taller se alimenta cada acto, metodología y ejemplo guiado

@@ -1,6 +1,6 @@
 # 🧭 Guía Paso a Paso: Simulación de Comité de Arquitectura
 
-Esta guía complementa el `README.md` del taller. A diferencia de los talleres anteriores, aquí no se construye una vista nueva ni se usa un caso base de clase: se toma **todo** el trabajo hecho para el cliente real (Talleres 1 a 7) y se condensa en una presentación ejecutiva de máximo 10 minutos, defendible ante un panel.
+Esta guía complementa el `README.md` del taller. A diferencia de los talleres anteriores, aquí no se construye una vista nueva ni se usa un caso base de clase: se toma **todo** el trabajo hecho para el cliente real (Talleres 1 a 8) y se condensa en una presentación ejecutiva de máximo 10 minutos, defendible ante un panel.
 
 ---
 
@@ -12,7 +12,7 @@ La presentación se organiza en 4 actos. Cada uno se alimenta de talleres espec�
 |---|---|---|
 | 1. Problema | ¿Qué necesita el cliente y por qué es urgente? | Taller 1 (proceso actual), Taller 2 (contexto de negocio) |
 | 2. Análisis | ¿Cómo está hoy la arquitectura y qué riesgos tiene? | Taller 3 (C1/C2), Taller 4 (infraestructura), Taller 5 (STRIDE), Taller 6 (normatividad) |
-| 3. Solución | ¿Qué se propone y por qué es la mejor alternativa? | Taller 7 (integración de vistas) |
+| 3. Solución | ¿Qué se propone y por qué es la mejor alternativa? | Taller 7 (Opportunities & Solutions: TO-BE y brechas), Taller 8 (integración de vistas) |
 | 4. Plan de Implementación | ¿Cómo y en qué orden se llega de lo actual a lo propuesto? | Riesgos priorizados (Paso 3 de esta guía) + Solución (Acto 3) |
 
 ---
@@ -45,7 +45,7 @@ Continuando el ejemplo del Taller 7 (el hilo de negocio "Compra Online" de FarmA
 |---|---|---|
 | Problema | Vista de negocio (Taller 1 / 7) | El proceso "Compra Online" con el punto de falla resaltado |
 | Análisis | Vista de infraestructura (Taller 4 / 7) | El mapa con el componente de sincronización marcado como cuello de botella |
-| Solución | Tablero integrado (Taller 7) | La nueva conexión propuesta entre POS y la plataforma e-commerce |
+| Solución | Tablero integrado (Taller 8) | La nueva conexión propuesta entre POS y la plataforma e-commerce |
 | Plan de Implementación | Matriz de riesgos (Paso 3) | El roadmap de fases con su línea de tiempo (Paso 4) |
 
 ### Paso 3 — Construir la matriz de riesgos arquitectónicos
@@ -108,7 +108,7 @@ gantt
 
 | Error frecuente | Por qué es un problema | Cómo corregirlo |
 |---|---|---|
-| Mostrar todos los diagramas de los 7 talleres en la presentación | Se pierde el tiempo asignado en detalle irrelevante para el panel | Seleccione solo la evidencia que sostiene cada acto (Paso 2) |
+| Mostrar todos los diagramas de los 8 talleres en la presentación | Se pierde el tiempo asignado en detalle irrelevante para el panel | Seleccione solo la evidencia que sostiene cada acto (Paso 2) |
 | Matriz de riesgos hecha desde cero, sin relación con los hallazgos previos | Contradice o repite trabajo ya hecho en el curso | Consolide los riesgos ya identificados en los Talleres 4, 5 y 6 |
 | Proponer una solución sin plan de implementación | El cliente se queda con el mismo "¿y ahora cómo lo hago?" que tenía antes del curso | Traduzca la solución en fases con esfuerzo, duración y responsable (Paso 4) |
 | Ordenar las fases del plan solo por prioridad de riesgo | Un riesgo de alta prioridad pero alto esfuerzo no siempre debe ir primero | Cruce prioridad de riesgo con esfuerzo de implementación al secuenciar las fases |
@@ -130,4 +130,4 @@ gantt
 
 ---
 
-_Esta guía hace parte del Taller 8 de Simulación de Comité de Arquitectura — curso Arquitectura Empresarial, Universidad de La Sabana._
+_Esta guía hace parte del Taller 9 de Simulación de Comité de Arquitectura — curso Arquitectura Empresarial, Universidad de La Sabana._
