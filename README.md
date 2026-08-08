@@ -2,7 +2,7 @@
 
 ## 🎯 Objetivo
 
-Presentar la solución arquitectónica final del cliente real ante un panel simulado de evaluación, defendiendo las decisiones de diseño tomadas durante el curso con base en vistas, buenas prácticas e investigación previa — y presentando un plan de implementación que traduzca la solución en fases ejecutables, para que el cliente se vaya con una ruta clara de "cómo" y no solo con el diseño.
+Presentar la solución arquitectónica final del cliente real ante un panel simulado de evaluación, defendiendo las decisiones de diseño tomadas durante el curso con base en vistas, buenas prácticas e investigación previa — presentando un plan de implementación que traduzca la solución en fases ejecutables, y dejando definidos los mecanismos de gobernanza y el procedimiento de actualización de la arquitectura, para que el cliente se vaya con una ruta clara de "cómo" y de "qué pasa después", no solo con el diseño.
 
 ---
 
@@ -49,6 +49,8 @@ Después de la presentación, el equipo debe:
 - Consolidar todas las vistas y modelos en `entrega/vistas-finales/`.
 - Entregar el resumen ejecutivo en `entrega/resumen-ejecutivo.md` usando la [plantilla de resumen ejecutivo](plantillas/plantilla_resumen_ejecutivo.md), y la matriz de evaluación de riesgos arquitectónicos (Paso 3 de la guía) en `presentacion/matriz-evaluacion.xlsx`.
 - Entregar el plan de implementación en `entrega/plan-implementacion.md` usando la [plantilla de plan de implementación](plantillas/plantilla_plan_implementacion.md) (Paso 4 de la guía): fases, riesgo que corrige cada una, esfuerzo, duración y responsable sugerido.
+- Entregar el plan de gobernanza en `entrega/plan-gobernanza.md` usando la [plantilla de plan de gobernanza](plantillas/plantilla_plan_gobernanza.md) (sección 6.1 de la guía): quién supervisa la ejecución del roadmap y con qué criterio.
+- Entregar el procedimiento de actualización en `entrega/procedimiento-cambios.md` usando la [plantilla de procedimiento de cambios](plantillas/plantilla_procedimiento_cambios.md) (sección 6.2 de la guía): disparadores de cambio, proceso y formato de ADR.
 - Incluir una reflexión individual de cada integrante en `entrega/reflexiones/`, usando la [plantilla de reflexión](plantillas/plantilla_reflexion_integrante1.md) como base.
 
 ---
@@ -66,6 +68,8 @@ taller-09-presentacion-final/
 ├── entrega/
 │   ├── resumen-ejecutivo.md               # Ver plantillas/plantilla_resumen_ejecutivo.md
 │   ├── plan-implementacion.md             # Ver plantillas/plantilla_plan_implementacion.md
+│   ├── plan-gobernanza.md                 # Ver plantillas/plantilla_plan_gobernanza.md
+│   ├── procedimiento-cambios.md           # Ver plantillas/plantilla_procedimiento_cambios.md
 │   ├── vistas-finales/                    # carpeta con diagramas consolidados
 │   └── reflexiones/
 │       ├── integrante1.md                 # Ver plantillas/plantilla_reflexion_integrante1.md
@@ -74,6 +78,8 @@ taller-09-presentacion-final/
 └── plantillas/
     ├── plantilla_resumen_ejecutivo.md
     ├── plantilla_plan_implementacion.md
+    ├── plantilla_plan_gobernanza.md
+    ├── plantilla_procedimiento_cambios.md
     └── plantilla_reflexion_integrante1.md
 ```
 
@@ -88,6 +94,8 @@ Antes de presentar, compare su narrativa, matriz y plan de implementación contr
 - Presentación ejecutiva (PDF o PowerPoint)
 - Matriz de riesgos arquitectónicos
 - Plan de implementación (roadmap de transición por fases)
+- Plan de gobernanza de la implementación
+- Procedimiento de actualización y revisión de la arquitectura
 - Documento resumen ejecutivo
 - Vistas arquitectónicas finales
 - Reflexiones individuales por integrante
@@ -101,6 +109,7 @@ Antes de presentar, compare su narrativa, matriz y plan de implementación contr
 | Coherencia entre vistas             | Conexión clara y justificada entre las capas de arquitectura            | Fragmentado o sin vínculo entre componentes              |
 | Argumentación y defensa técnica     | Explicación sólida y fundamentada de las decisiones de diseño            | Explicaciones débiles o improvisadas                     |
 | Plan de implementación              | Fases claras, trazables a riesgos concretos, con esfuerzo y tiempos realistas | Fases genéricas o sin relación con los riesgos identificados |
+| Gobernanza y gestión de cambios     | Mecanismo de supervisión, criterios de conformidad y proceso de cambio claros y aplicables | Documentos genéricos, copiados o sin relación con el proyecto |
 | Presentación ejecutiva              | Clara, bien estructurada, ajustada al tiempo                            | Desordenada o confusa                                    |
 | Reflexión individual                | Aporta valor personal sobre el proceso de aprendizaje                    | Superficial o repetitiva                                 |
 
