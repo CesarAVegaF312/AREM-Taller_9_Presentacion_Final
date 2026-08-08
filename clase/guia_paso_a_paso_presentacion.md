@@ -191,4 +191,25 @@ A diferencia del Plan de Implementación (que ejecuta un cambio ya decidido), es
 
 ---
 
+## 7. Vista ArchiMate equivalente
+
+Cierra la cadena que empezó en el Taller 7: cada fase del Plan de Implementación (Paso 4) es un **Work Package** de la capa de Implementación y Migración (ver la [Guía de Notación ArchiMate](https://github.com/CesarAVegaF312/AREM-ArchiMate/blob/main/guia_notacion_archimate.md)) que **realiza** un Gap y produce el nuevo Plateau TO-BE.
+
+```mermaid
+flowchart LR
+    gap(["⚠️ Gap: sincronización de inventario"])
+    wp["📦 Work Package: Sincronización CDC POS-Ecommerce"]
+    tobe["📍 Plateau: FarmApp TO-BE"]
+
+    gap -->|"es resuelto por"| wp
+    wp -->|"produce"| tobe
+
+    classDef migracion fill:#ffcc99,color:#000,stroke:#cc6600;
+    class gap,wp,tobe migracion
+```
+
+El Plan de Gobernanza (sección 6.1) y el Procedimiento de Cambios (sección 6.2) también tienen su lugar en ArchiMate: el primero define quién valida que cada `Work Package` efectivamente produce el `Plateau` esperado; el segundo describe el proceso para, más adelante, abrir un nuevo ciclo Constraint/Requirement → Gap → Work Package cuando surja una necesidad de cambio no prevista en este semestre.
+
+---
+
 _Esta guía hace parte del Taller 9 de Simulación de Comité de Arquitectura — curso Arquitectura Empresarial, Universidad de La Sabana._
