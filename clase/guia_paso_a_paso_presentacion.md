@@ -130,4 +130,65 @@ gantt
 
 ---
 
+## 6. Documentos adicionales: Gobernanza y Gestión de Cambios
+
+Estos dos documentos **no son un quinto acto de la charla** — el pitch se queda en 10 minutos con los 4 actos del Paso 1. Se entregan junto con el resto del paquete final como anexos que el comité puede consultar, y corresponden a las fases *Implementation Governance* y *Architecture Change Management* de TOGAF ADM: el Plan de Implementación (Acto 4) responde "cómo ejecutamos este cambio"; estos dos documentos responden "quién lo supervisa mientras se ejecuta" y "qué hacemos cuando algo cambie después".
+
+### 6.1 Plan de Gobernanza de la Implementación
+
+Defina, en 4 puntos:
+
+1. **Mecanismo de gobierno** — quién revisa el avance del roadmap (Acto 4) y con qué frecuencia.
+2. **Criterio de conformidad** — cómo se verifica que cada fase implementada respeta el diseño aprobado en el Taller 7 (Opportunities & Solutions).
+3. **Escalamiento** — qué pasa si una fase necesita desviarse del diseño aprobado (quién autoriza la excepción).
+4. **Cadencia de seguimiento** — cada cuánto se reporta el avance del roadmap.
+
+**Ejemplo — FarmApp:**
+
+| Elemento | Definición |
+|---|---|
+| Comité de Arquitectura | Arquitecto líder + representante de negocio + representante de seguridad |
+| Cadencia | Reunión mensual mientras dure la ejecución del roadmap (Taller 9, Paso 4) |
+| Criterio de conformidad | Una fase se cierra solo si el arquitecto líder valida que el resultado coincide con el TO-BE del Taller 7 |
+| Escalamiento | Cualquier desviación del diseño aprobado (ej. por restricción de presupuesto) requiere aprobación escrita del comité antes de continuar |
+
+### 6.2 Procedimiento de Actualización y Revisión de la Arquitectura
+
+A diferencia del Plan de Implementación (que ejecuta un cambio ya decidido), este procedimiento cubre qué pasa **después**, cuando el roadmap ya se ejecutó y surge la necesidad de un cambio nuevo. Defina:
+
+1. **Disparadores de cambio** — qué eventos ameritan revisar la arquitectura (nueva regulación, cambio de proveedor, incidente de seguridad, crecimiento inesperado de demanda).
+2. **Proceso de cambio** — quién propone un cambio, quién lo evalúa y en cuánto tiempo.
+3. **Registro de decisiones** — use un ADR (Architecture Decision Record) simple para dejar constancia de cada decisión.
+4. **Revisión periódica completa** — cada cuánto se revisa toda la arquitectura contra el estado real del negocio (no solo ante un disparador puntual).
+
+**Ejemplo — FarmApp:**
+
+| Disparador de cambio | Ejemplo concreto |
+|---|---|
+| Nueva regulación | Cambio en la Ley 1581 sobre datos de salud (medicamentos con prescripción) |
+| Cambio de proveedor | Migración del proveedor de nube actual |
+| Incidente de seguridad | Una brecha real en el flujo de pagos |
+| Crecimiento de demanda | Aumento de +30% en pedidos mensuales |
+
+**Plantilla mínima de ADR:**
+
+| Campo | Contenido |
+|---|---|
+| Título | Nombre corto de la decisión |
+| Estado | Propuesta / Aceptada / Reemplazada |
+| Contexto | Qué disparó la necesidad de decidir |
+| Decisión | Qué se decidió |
+| Alternativas consideradas | Qué otras opciones se evaluaron y por qué no se eligieron |
+| Consecuencias | Qué implica esta decisión hacia adelante |
+
+**Checklist de estos dos documentos:**
+
+- [ ] El plan de gobernanza define quién revisa la implementación y con qué frecuencia.
+- [ ] El criterio de conformidad está trazado al TO-BE del Taller 7, no es una opinión subjetiva.
+- [ ] El procedimiento de cambios define disparadores concretos, no solo "cuando sea necesario".
+- [ ] Existe un formato de ADR (o equivalente) para registrar decisiones futuras.
+- [ ] Está definida una cadencia de revisión periódica completa de la arquitectura.
+
+---
+
 _Esta guía hace parte del Taller 9 de Simulación de Comité de Arquitectura — curso Arquitectura Empresarial, Universidad de La Sabana._
