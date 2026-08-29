@@ -12,6 +12,26 @@ _Escriba aquí el nombre del cliente real._
 
 Explique en 2-3 líneas quién supervisa la ejecución del Plan de Implementación (`plan-implementacion.md`) mientras se lleva a cabo, y qué pasa si una fase se desvía de lo aprobado.
 
+## 🧭 Principios Arquitectónicos
+
+Defina mínimo 3 principios que orientan las decisiones de diseño del proyecto. No copie definiciones de manual: explique qué significa cada uno para este proyecto específico y por qué se adoptó (ej. API First, Security by Design, Loose Coupling, Cloud First / Escalabilidad, u otros pertinentes a su cliente real).
+
+| Principio | Explicación | Justificación en el proyecto |
+|---|---|---|
+| | | |
+| | | |
+| | | |
+
+## 🧱 Estándares Tecnológicos
+
+Defina los estándares tecnológicos autorizados para este proyecto, con elecciones concretas (no solo la categoría).
+
+| Categoría | Estándar definido | Por qué |
+|---|---|---|
+| Lenguaje / framework | | |
+| Tipo de comunicación (REST, eventos, etc.) | | |
+| Infraestructura | | |
+
 ## 🧑‍⚖️ Mecanismo de gobierno
 
 | Rol | Responsabilidad | Persona / equipo sugerido |

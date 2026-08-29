@@ -30,16 +30,29 @@ Defina, paso a paso: quién puede proponer un cambio arquitectónico, quién lo 
 
 ## 📋 Registro de decisiones (ADR)
 
-Use este formato para registrar cada decisión arquitectónica futura:
+Complete al menos 2 ADR reales de su proyecto: decisiones arquitectónicas importantes que el equipo **ya tomó** durante el curso (no hipotéticas ni inventadas para la entrega). Use este formato:
 
-| Campo | Contenido |
+| Campo | ADR #1 |
 |---|---|
 | Título | |
 | Estado | Propuesta / Aceptada / Reemplazada |
 | Contexto | |
+| Problema | |
 | Decisión | |
 | Alternativas consideradas | |
 | Consecuencias | |
+
+| Campo | ADR #2 |
+|---|---|
+| Título | |
+| Estado | Propuesta / Aceptada / Reemplazada |
+| Contexto | |
+| Problema | |
+| Decisión | |
+| Alternativas consideradas | |
+| Consecuencias | |
+
+Puede agregar tablas adicionales con el mismo formato si su proyecto tiene más de 2 decisiones importantes que documentar.
 
 ## 📅 Revisión periódica completa
 
