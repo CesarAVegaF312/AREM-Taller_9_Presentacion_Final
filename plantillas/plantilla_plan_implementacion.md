@@ -23,7 +23,7 @@ Traduzca la solución en fases ejecutables. Cada fase debe estar trazada a un ri
 | Mediano plazo | | | | | |
 | Largo plazo | | | | | |
 
-> **Recuerde:** el orden de las fases no depende solo de la prioridad de riesgo (Taller 8, Paso 3) — un riesgo de alta prioridad pero de alto esfuerzo no necesariamente va primero. Cruce prioridad de riesgo con esfuerzo de implementación al secuenciar.
+> **Recuerde:** el orden de las fases no depende solo de la prioridad de riesgo (Taller 9, Paso 3) — un riesgo de alta prioridad pero de alto esfuerzo no necesariamente va primero. Cruce prioridad de riesgo con esfuerzo de implementación al secuenciar.
 
 ## 📅 Línea de tiempo
 
