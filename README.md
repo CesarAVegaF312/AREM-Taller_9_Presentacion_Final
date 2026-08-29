@@ -32,10 +32,11 @@ Siga la metodología de 6 pasos de la [guía paso a paso](clase/guia_paso_a_paso
 
 1. Estructure la narrativa en 4 actos: problema → análisis → solución → plan de implementación.
 2. Seleccione la evidencia clave de cada taller anterior para cada acto.
-3. Construya la matriz de riesgos arquitectónicos, consolidando los hallazgos de Infraestructura, STRIDE y Normatividad.
+3. Construya la matriz de riesgos arquitectónicos, consolidando los hallazgos de Infraestructura, STRIDE y Normatividad, y cubriendo además los dominios de Negocio y Datos/Procesos (7 dominios de riesgo de arquitectura empresarial).
 4. Construya el plan de implementación: traduzca la solución en fases (quick win, corto, mediano y largo plazo), cada una trazada a un riesgo específico.
 5. Anticipe las preguntas críticas del panel y prepare respuestas basadas en evidencia.
 6. Ensaye contra el tiempo (máximo 10 minutos) y valide con la [checklist de autoevaluación](clase/guia_paso_a_paso_presentacion.md#5-checklist-de-autoevaluación-antes-de-entregar).
+7. Defina los Principios Arquitectónicos, los Estándares tecnológicos y al menos 2 ADR reales del proyecto (sección 6.0 de la guía) — no se limite a diligenciar una plantilla en blanco.
 
 - Asista a las presentaciones de otros equipos y prepare retroalimentación (peer review).
 
@@ -49,8 +50,8 @@ Después de la presentación, el equipo debe:
 - Consolidar todas las vistas y modelos en `entrega/vistas-finales/`.
 - Entregar el resumen ejecutivo en `entrega/resumen-ejecutivo.md` usando la [plantilla de resumen ejecutivo](plantillas/plantilla_resumen_ejecutivo.md), y la matriz de evaluación de riesgos arquitectónicos (Paso 3 de la guía) en `presentacion/matriz-evaluacion.xlsx`.
 - Entregar el plan de implementación en `entrega/plan-implementacion.md` usando la [plantilla de plan de implementación](plantillas/plantilla_plan_implementacion.md) (Paso 4 de la guía): fases, riesgo que corrige cada una, esfuerzo, duración y responsable sugerido.
-- Entregar el plan de gobernanza en `entrega/plan-gobernanza.md` usando la [plantilla de plan de gobernanza](plantillas/plantilla_plan_gobernanza.md) (sección 6.1 de la guía): quién supervisa la ejecución del roadmap y con qué criterio.
-- Entregar el procedimiento de actualización en `entrega/procedimiento-cambios.md` usando la [plantilla de procedimiento de cambios](plantillas/plantilla_procedimiento_cambios.md) (sección 6.2 de la guía): disparadores de cambio, proceso y formato de ADR.
+- Entregar el plan de gobernanza en `entrega/plan-gobernanza.md` usando la [plantilla de plan de gobernanza](plantillas/plantilla_plan_gobernanza.md) (secciones 6.0 y 6.2 de la guía): principios arquitectónicos y estándares tecnológicos del proyecto, además de quién supervisa la ejecución del roadmap y con qué criterio.
+- Entregar el procedimiento de actualización en `entrega/procedimiento-cambios.md` usando la [plantilla de procedimiento de cambios](plantillas/plantilla_procedimiento_cambios.md) (sección 6.3 de la guía): disparadores de cambio, proceso, y al menos 2 ADR reales del proyecto ya tomados (no una plantilla en blanco).
 - Incluir una reflexión individual de cada integrante en `entrega/reflexiones/`, usando la [plantilla de reflexión](plantillas/plantilla_reflexion_integrante1.md) como base.
 
 ---
@@ -109,7 +110,7 @@ Antes de presentar, compare su narrativa, matriz y plan de implementación contr
 | Coherencia entre vistas             | Conexión clara y justificada entre las capas de arquitectura            | Fragmentado o sin vínculo entre componentes              |
 | Argumentación y defensa técnica     | Explicación sólida y fundamentada de las decisiones de diseño            | Explicaciones débiles o improvisadas                     |
 | Plan de implementación              | Fases claras, trazables a riesgos concretos, con esfuerzo y tiempos realistas | Fases genéricas o sin relación con los riesgos identificados |
-| Gobernanza y gestión de cambios     | Mecanismo de supervisión, criterios de conformidad y proceso de cambio claros y aplicables | Documentos genéricos, copiados o sin relación con el proyecto |
+| Gobernanza y gestión de cambios     | Principios arquitectónicos y estándares justificados en el proyecto, al menos 2 ADR reales bien argumentados, mecanismo de supervisión, criterios de conformidad y proceso de cambio claros y aplicables | Principios/estándares genéricos de manual, ADR sin llenar o hipotéticos, documentos copiados o sin relación con el proyecto |
 | Presentación ejecutiva              | Clara, bien estructurada, ajustada al tiempo                            | Desordenada o confusa                                    |
 | Reflexión individual                | Aporta valor personal sobre el proceso de aprendizaje                    | Superficial o repetitiva                                 |
 
