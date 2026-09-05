@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hoja de cierre y gobernanza · Comité de Arquitectura · AREM</title>
+<style>
+  :root{
+    --paper:#F2F1EA;
+    --ink:#14263C;
+    --ink-soft:#3B4C5E;
+    --threat:#B4552B;
+    --control:#1C7150;
+    --steel:#5F7387;
+    --rule:#C9C6B8;
+    --card:#FBFAF6;
+    --grid:rgba(20,38,60,.055);
+    --mono: ui-monospace, "SFMono-Regular", "JetBrains Mono", Menlo, Consolas, monospace;
+    --sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} *{transition:none !important} }
+
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:var(--sans); font-size:17px; line-height:1.55;
+    background-image:
+      repeating-linear-gradient(0deg, var(--grid) 0 1px, transparent 1px 28px),
+      repeating-linear-gradient(90deg, var(--grid) 0 1px, transparent 1px 28px);
+  }
+  .wrap{max-width:1180px;margin:0 auto;padding:0 28px}
+
+  /* ---------- estructura de lámina ---------- */
+  .sheet{border:1px solid var(--rule);background:rgba(251,250,246,.72);margin:34px 0;position:relative}
+  .sheet::before,.sheet::after{content:"";position:absolute;width:13px;height:13px;border:1px solid var(--steel);opacity:.5}
+  .sheet::before{top:-7px;left:-7px;border-right:0;border-bottom:0}
+  .sheet::after{bottom:-7px;right:-7px;border-left:0;border-top:0}
+  .sheet-inner{padding:34px}
+  @media(max-width:720px){ .sheet-inner{padding:20px} .wrap{padding:0 14px} }
+
+  .ref{font-family:var(--mono);font-size:11.5px;color:var(--steel);letter-spacing:.04em}
+
+  h1{font-size:clamp(34px,6vw,62px);line-height:1.02;letter-spacing:-.025em;font-weight:800;margin:.1em 0 .25em}
+  h2{font-size:clamp(24px,3.4vw,34px);line-height:1.12;letter-spacing:-.018em;font-weight:800;margin:0 0 6px}
+  h3{font-size:19px;letter-spacing:-.01em;font-weight:700;margin:0 0 6px}
+  .lede{font-size:19px;color:var(--ink-soft);max-width:62ch;margin:0}
+  p{max-width:70ch}
+  a{color:var(--threat)}
+
+  /* ---------- cabecera ---------- */
+  header.top{border-bottom:1px solid var(--rule);background:var(--ink);color:#EAF0F4}
+  header.top .wrap{display:flex;justify-content:space-between;align-items:baseline;padding-top:14px;padding-bottom:14px;gap:16px;flex-wrap:wrap}
+  header.top .ref{color:#8CA6BA}
+  nav.jump{display:flex;gap:18px;flex-wrap:wrap}
+  nav.jump a{color:#EAF0F4;text-decoration:none;font-family:var(--mono);font-size:12px;border-bottom:1px solid transparent;padding-bottom:2px}
+  nav.jump a:hover,nav.jump a:focus-visible{border-bottom-color:#E0A06B}
+
+  .hero{padding:52px 0 8px}
+  .hero h1{max-width:20ch}
+
+  /* ---------- piezas ---------- */
+  .cols{display:grid;gap:20px}
+  .c2{grid-template-columns:repeat(2,1fr)}
+  .c3{grid-template-columns:repeat(3,1fr)}
+  @media(max-width:860px){ .c2,.c3{grid-template-columns:1fr} }
+  .block{border:1px solid var(--rule);background:var(--card);padding:18px}
+  .block.threatline{border-top:3px solid var(--threat)}
+  .block.controlline{border-top:3px solid var(--control)}
+  .block.inkline{border-top:3px solid var(--ink)}
+  .block p{font-size:15px;color:var(--ink-soft);margin:0}
+  .block .tag{font-family:var(--mono);font-size:11px;color:var(--steel);letter-spacing:.04em;display:block;margin-bottom:6px}
+
+  .steps{counter-reset:s;display:grid;gap:12px}
+  .step{display:flex;gap:14px;border:1px solid var(--rule);background:var(--card);padding:14px 16px}
+  .step .n{font-family:var(--mono);font-size:13px;color:var(--threat);flex:none;padding-top:2px}
+  .step p{margin:4px 0 0;font-size:15px;color:var(--ink-soft)}
+
+  /* ---------- cadena (chain / chaindetail) ---------- */
+  .chain{display:flex;gap:0;flex-wrap:wrap;border:1px solid var(--ink);background:var(--card)}
+  .chain button{
+    flex:1 1 160px;background:transparent;border:0;border-right:1px solid var(--rule);
+    padding:14px 12px;text-align:left;cursor:pointer;font-family:var(--sans);color:var(--ink);min-width:0
+  }
+  .chain button:last-child{border-right:0}
+  .chain button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+  .chain button[aria-pressed="true"] .cn{color:#E0A06B}
+  .chain button:focus-visible{outline:2px solid var(--threat);outline-offset:-2px}
+  .chain .cn{display:block;font-family:var(--mono);font-size:11px;color:var(--steel);margin-bottom:3px}
+  .chain .ct{font-size:14px;font-weight:700;line-height:1.25}
+  .chaindetail{border:1px solid var(--rule);border-top:0;background:var(--card);padding:18px}
+  .chaindetail h3{margin-bottom:4px}
+  .chaindetail p{margin:0 0 10px;font-size:15px;color:var(--ink-soft)}
+  .chaindetail .ex{font-family:var(--mono);font-size:13px;color:var(--ink);background:rgba(180,85,43,.09);padding:10px 12px;border-left:3px solid var(--threat);white-space:pre-wrap}
+  .chaindetail .ans{font-size:15px;color:var(--ink);background:rgba(28,113,80,.08);padding:10px 12px;border-left:3px solid var(--control)}
+  .chaindetail .lbl{font-family:var(--mono);font-size:11px;color:var(--steel);letter-spacing:.04em;display:block;margin:0 0 4px}
+
+  /* ---------- matriz / tablas ---------- */
+  table{border-collapse:collapse;width:100%;font-size:14.5px}
+  th,td{border:1px solid var(--rule);padding:9px 11px;text-align:left;vertical-align:top}
+  thead th{background:var(--ink);color:var(--paper);font-weight:700;font-size:13px}
+  .matrix td.mark{text-align:center;font-family:var(--mono);font-weight:700}
+  .matrix td.p-alta{color:var(--threat)}
+  .matrix td.p-media{color:var(--steel)}
+  .matrix td.p-baja{color:var(--ink-soft)}
+  .tablewrap{overflow-x:auto}
+
+  /* ---------- ADR ---------- */
+  .adr{border:1px solid var(--rule);background:var(--card);padding:0;overflow:hidden}
+  .adr .adrhead{background:var(--ink);color:var(--paper);padding:12px 18px;display:flex;justify-content:space-between;gap:12px;align-items:baseline;flex-wrap:wrap}
+  .adr .adrhead h3{color:var(--paper);margin:0;font-size:17px}
+  .adr .adrhead .status{font-family:var(--mono);font-size:11px;color:#E0A06B;letter-spacing:.05em}
+  .adr dl{margin:0;padding:16px 18px;display:grid;gap:12px}
+  .adr dt{font-family:var(--mono);font-size:11px;color:var(--threat);letter-spacing:.05em;margin-bottom:3px}
+  .adr dd{margin:0;font-size:14.5px;color:var(--ink-soft);max-width:none}
+
+  .callout{border:1px solid var(--ink);background:var(--ink);color:#EAF0F4;padding:20px 22px}
+  .callout p{color:#C6D6E1;margin:0;max-width:78ch}
+  .callout strong{color:#E0A06B}
+
+  .note{font-size:14px;color:var(--steel);max-width:78ch}
+  footer{border-top:1px solid var(--rule);margin-top:40px;padding:26px 0 50px}
+  footer p{font-family:var(--mono);font-size:12px;color:var(--steel)}
+  .srcs{font-size:14px;color:var(--ink-soft)}
+  .srcs li{margin-bottom:5px}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <span class="ref">AREM · Módulo 9 · Hoja de cierre y gobernanza</span>
+    <nav class="jump" aria-label="Secciones">
+      <a href="#pitch">Pitch en 4 actos</a>
+      <a href="#defensa">Defensa anticipada</a>
+      <a href="#principios">Principios</a>
+      <a href="#riesgos">Matriz de riesgos</a>
+      <a href="#gobernanza">Gobernanza</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <section class="hero">
+    <p class="ref">Universidad de La Sabana · Arquitectura Empresarial</p>
+    <h1>Diez minutos para defender ocho talleres de trabajo.</h1>
+    <p class="lede">El Taller 9 no construye una vista nueva: selecciona y condensa todo el trabajo hecho para el cliente real — FarmApp — en una narrativa de 4 actos, una matriz de riesgos de 7 dominios, un plan de implementación por fases y un marco de gobernanza. Esta hoja recorre esa síntesis con el mismo contenido de la guía paso a paso, listo para ensayar la defensa ante el panel.</p>
+  </section>
+
+  <!-- ============ PITCH: 4 ACTOS ============ -->
+  <section class="sheet" id="pitch">
+    <div class="sheet-inner">
+      <p class="ref">01 · El pitch</p>
+      <h2>La narrativa en 4 actos</h2>
+      <p class="lede" style="margin-bottom:18px">No se inventa contenido nuevo: cada acto selecciona y resume lo ya construido en talleres anteriores. Seleccione un acto para ver la pregunta que responde, la síntesis real del caso FarmApp y de qué taller sale la evidencia que se muestra en pantalla.</p>
+
+      <div class="chain" role="group" aria-label="Actos del pitch" id="actChain"></div>
+      <div class="chaindetail" id="actDetail"></div>
+
+      <div class="callout" style="margin-top:16px">
+        <p><strong>Por qué existe el Acto 4:</strong> una solución sin plan de implementación deja al cliente con la misma pregunta sin responder — "¿y ahora cómo lo hago?". El cuarto acto traduce la solución del Acto 3 en fases ejecutables, trazadas a los riesgos priorizados en la matriz de 7 dominios.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ DEFENSA ============ -->
+  <section class="sheet" id="defensa">
+    <div class="sheet-inner">
+      <p class="ref">02 · Preparar el interrogatorio</p>
+      <h2>Preguntas de defensa anticipadas</h2>
+      <p class="lede" style="margin-bottom:18px">El panel evalúa tanto la solidez técnica como la capacidad de responder con evidencia, no con opinión. Estas son las tres preguntas más probables del comité sobre el caso FarmApp — cada una con la evidencia del taller que la sostiene y la respuesta preparada.</p>
+
+      <div class="chain" role="group" aria-label="Preguntas del panel" id="qChain"></div>
+      <div class="chaindetail" id="qDetail"></div>
+
+      <p class="note" style="margin-top:14px">Ver también la hoja de cierre de gobernanza más abajo (<a href="#gobernanza">#gobernanza</a>): varias respuestas de defensa remiten directamente a un principio arquitectónico o a una ADR ya tomada, no a una justificación improvisada.</p>
+    </div>
+  </section>
+
+  <!-- ============ PRINCIPIOS ============ -->
+  <section class="sheet" id="principios">
+    <div class="sheet-inner">
+      <p class="ref">03 · Con qué reglas se diseñó</p>
+      <h2>Principios Arquitectónicos</h2>
+      <p class="lede" style="margin-bottom:18px">El marco de referencia contra el cual se valida cualquier decisión, presente o futura. Sin estos principios, el criterio de conformidad de la gobernanza (sección 6.2) no tendría contra qué compararse más allá del TO-BE del Taller 7.</p>
+
+      <div class="cols c2" id="principlesGrid"></div>
+
+      <h3 style="margin:28px 0 10px">Estándares Tecnológicos</h3>
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th style="width:20%">Categoría</th><th style="width:36%">Estándar definido</th><th>Por qué</th></tr></thead>
+          <tbody>
+            <tr><td>Lenguaje / framework</td><td>Java + Spring Boot para los nuevos microservicios de integración; el POS heredado no se reescribe (Taller 4)</td><td>Reutiliza el conocimiento del equipo de plataforma y evita el riesgo/costo de reescribir un sistema crítico en producción.</td></tr>
+            <tr><td>Tipo de comunicación</td><td>REST para consultas síncronas (catálogo, disponibilidad); eventos (broker tipo Kafka/RabbitMQ) para la sincronización de inventario vía CDC</td><td>Conecta directamente con la ADR #1: la sincronización casi en tiempo real necesita un canal de eventos, no solo peticiones síncronas.</td></tr>
+            <tr><td>Infraestructura</td><td>Nube híbrida: servidores regionales on-premise para el POS heredado + nube pública para integración y e-commerce; balanceador de carga redundante</td><td>Continúa la decisión de nube híbrida del Taller 4 y conecta con la ADR #2 (redundancia del balanceador).</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ MATRIZ DE RIESGOS ============ -->
+  <section class="sheet" id="riesgos">
+    <div class="sheet-inner">
+      <p class="ref">04 · Consolidado, no repetido desde cero</p>
+      <h2>Matriz de riesgos arquitectónicos — 7 dominios</h2>
+      <p class="lede" style="margin-bottom:18px">Los primeros cuatro riesgos consolidan hallazgos ya identificados en Infraestructura (Taller 4), Seguridad/STRIDE (Taller 5) y Gobierno TI/Normatividad (Taller 6); los dos últimos formalizan riesgos de Negocio y de Datos/Procesos que un análisis puramente técnico suele dejar por fuera.</p>
+
+      <div class="tablewrap">
+        <table class="matrix">
+          <thead>
+            <tr><th>Riesgo</th><th>Causa</th><th>Impacto</th><th>Probabilidad</th><th>Arquitectura afectada</th><th>Mitigación</th><th style="text-align:center">Prioridad</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Retraso de sincronización de inventario</td>
+              <td>Sincronización POS ↔ e-commerce mediante base de datos replicada con corte batch (Taller 4)</td>
+              <td>Alto</td><td class="mark p-alta">Alta</td>
+              <td>Infraestructura</td>
+              <td>Sincronización casi en tiempo real (CDC) entre POS y e-commerce</td>
+              <td class="mark">1</td>
+            </tr>
+            <tr>
+              <td>Inventario desincronizado entre POS y e-commerce genera pedidos fallidos</td>
+              <td>Ausencia de un proceso de reconciliación y alertas de discrepancia entre el inventario del POS y el del e-commerce</td>
+              <td>Alto</td><td class="mark p-alta">Alta</td>
+              <td>Datos / Procesos</td>
+              <td>Proceso de reconciliación automática con alertas de discrepancia y trazabilidad de cada ajuste de stock</td>
+              <td class="mark">1</td>
+            </tr>
+            <tr>
+              <td>Exposición de datos de pago</td>
+              <td>Falta de cifrado en tránsito en el flujo de pagos (Taller 5, STRIDE)</td>
+              <td>Alto</td><td class="mark p-media">Media</td>
+              <td>Seguridad</td>
+              <td>TLS en todos los subdominios y cifrado de datos de pago en tránsito</td>
+              <td class="mark">2</td>
+            </tr>
+            <tr>
+              <td>Incumplimiento de la Ley 1581 en el manejo de datos de clientes</td>
+              <td>Ausencia de consentimiento explícito antes de procesar datos personales/de pago (Taller 6, normatividad)</td>
+              <td>Alto</td><td class="mark p-media">Media</td>
+              <td>Gobierno TI</td>
+              <td>Consentimiento explícito antes de procesar datos de pago</td>
+              <td class="mark">2</td>
+            </tr>
+            <tr>
+              <td>Dependencia de un único proveedor de logística para entregas</td>
+              <td>No existe un proveedor alterno contratado ni cláusulas de contingencia en el contrato actual</td>
+              <td>Alto</td><td class="mark p-media">Media</td>
+              <td>Negocio</td>
+              <td>Contrato con proveedor de logística alterno y SLA de respaldo</td>
+              <td class="mark">2</td>
+            </tr>
+            <tr>
+              <td>Punto único de falla en el balanceador de carga</td>
+              <td>Un único balanceador de carga activo, sin redundancia (Taller 4)</td>
+              <td>Alto</td><td class="mark p-baja">Baja</td>
+              <td>Infraestructura</td>
+              <td>Redundancia del balanceador de carga</td>
+              <td class="mark">3</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note" style="margin-top:12px">El riesgo de mayor prioridad (retraso de sincronización) exige más esfuerzo de desarrollo, así que no es el quick win del plan de implementación: las fases se secuencian cruzando prioridad de riesgo con esfuerzo, no solo por esta columna.</p>
+    </div>
+  </section>
+
+  <!-- ============ GOBERNANZA ============ -->
+  <section class="sheet" id="gobernanza">
+    <div class="sheet-inner">
+      <p class="ref">05 · Quién lo supervisa y qué pasa después</p>
+      <h2>Decisiones ya tomadas (ADR) y gobernanza de la implementación</h2>
+      <p class="lede" style="margin-bottom:18px">Ver también la <a href="clase/guia_paso_a_paso_presentacion.md#6-documentos-adicionales-gobernanza-y-gestión-de-cambios">guía paso a paso, sección 6</a>. Estos documentos no son un quinto acto del pitch — se entregan como anexos que el comité puede consultar. Las dos ADR siguientes formalizan decisiones que ya están implícitas en el plan de implementación del Acto 4.</p>
+
+      <div class="cols c2" style="margin-bottom:28px">
+        <div class="adr">
+          <div class="adrhead"><h3>ADR #1 · Sincronización de inventario vía CDC en lugar de batch nocturno</h3><span class="status">Aceptada</span></div>
+          <dl>
+            <div><dt>Contexto</dt><dd>FarmApp sincroniza hoy el inventario entre el POS y la plataforma e-commerce mediante una base de datos replicada con corte batch (Taller 4 / Taller 7).</dd></div>
+            <div><dt>Problema</dt><dd>El retraso de varias horas entre corte y corte hace que el e-commerce muestre disponibilidad que ya no existe en tienda, generando pedidos que no se pueden despachar (riesgo de prioridad 1 de la matriz).</dd></div>
+            <div><dt>Decisión</dt><dd>Reemplazar el batch nocturno por sincronización casi en tiempo real usando Change Data Capture (CDC) sobre la base del POS, publicando los cambios de inventario como eventos que consume el e-commerce.</dd></div>
+            <div><dt>Alternativas consideradas</dt><dd>(a) Aumentar la frecuencia del batch (ej. cada 15 min): no elimina el riesgo en horas pico, solo lo reduce. (b) Reescribir el POS heredado para escritura compartida: alto costo y riesgo de romper un sistema crítico en producción. (c) CDC: menor intrusión sobre el sistema heredado y coherente con los principios API First y Loose Coupling.</dd></div>
+            <div><dt>Consecuencias</dt><dd>Se requiere introducir un bus de eventos y monitoreo del pipeline de CDC; corresponde a la fase "Mediano plazo" del plan de implementación, esfuerzo Alto, responsable Plataforma.</dd></div>
+          </dl>
+        </div>
+        <div class="adr">
+          <div class="adrhead"><h3>ADR #2 · Balanceador de carga redundante activo-pasivo en lugar de activo-activo</h3><span class="status">Aceptada</span></div>
+          <dl>
+            <div><dt>Contexto</dt><dd>El Taller 4 identificó un balanceador de carga único como punto único de falla (SPOF) para la disponibilidad de la plataforma e-commerce (riesgo de prioridad 3 de la matriz).</dd></div>
+            <div><dt>Problema</dt><dd>Ante la caída del balanceador activo, toda la operación digital de FarmApp queda inaccesible, sin mecanismo de contingencia.</dd></div>
+            <div><dt>Decisión</dt><dd>Implementar un segundo balanceador en configuración activo-pasivo con failover automático, en vez de una configuración activo-activo.</dd></div>
+            <div><dt>Alternativas consideradas</dt><dd>(a) Activo-activo: descartada en esta fase por exigir sincronización de sesión y mayor complejidad operacional frente a un beneficio marginal dado el volumen actual de tráfico. (b) Mantener un único balanceador con monitoreo reforzado: no elimina el SPOF, solo acorta el tiempo de detección. (c) Activo-pasivo: menor complejidad y costo, adecuada al volumen de tráfico actual.</dd></div>
+            <div><dt>Consecuencias</dt><dd>Se acepta un tiempo de failover no-cero (RTO) en vez de conmutación instantánea; revisable si se activa el disparador de crecimiento de demanda (+30% pedidos mensuales); corresponde a la fase "Largo plazo", esfuerzo Medio, responsable Infraestructura.</dd></div>
+          </dl>
+        </div>
+      </div>
+
+      <h3 style="margin-bottom:10px">Plan de Gobernanza de la Implementación</h3>
+      <p style="margin-bottom:14px;color:var(--ink-soft)">Define quién revisa el avance del roadmap del Acto 4 y con qué criterio se cierra cada fase.</p>
+      <div class="tablewrap" style="margin-bottom:26px">
+        <table>
+          <thead><tr><th style="width:26%">Elemento</th><th>Definición</th></tr></thead>
+          <tbody>
+            <tr><td>Comité de Arquitectura</td><td>Arquitecto líder + representante de negocio + representante de seguridad.</td></tr>
+            <tr><td>Cadencia</td><td>Reunión mensual mientras dure la ejecución del roadmap (Taller 9, plan de implementación).</td></tr>
+            <tr><td>Criterio de conformidad</td><td>Una fase se cierra solo si el arquitecto líder valida que el resultado coincide con el TO-BE del Taller 7.</td></tr>
+            <tr><td>Escalamiento</td><td>Cualquier desviación del diseño aprobado (ej. por restricción de presupuesto) requiere aprobación escrita del comité antes de continuar.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 style="margin-bottom:10px">Procedimiento de Actualización y Revisión de la Arquitectura</h3>
+      <p style="margin-bottom:14px;color:var(--ink-soft)">Cubre qué pasa después de que el roadmap ya se ejecutó y surge la necesidad de un cambio nuevo — no es lo mismo que ejecutar un cambio ya decidido (Acto 4).</p>
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th style="width:26%">Disparador de cambio</th><th>Ejemplo concreto</th></tr></thead>
+          <tbody>
+            <tr><td>Nueva regulación</td><td>Cambio en la Ley 1581 sobre datos de salud (medicamentos con prescripción).</td></tr>
+            <tr><td>Cambio de proveedor</td><td>Migración del proveedor de nube actual, o del proveedor único de logística (riesgo de Negocio de la matriz).</td></tr>
+            <tr><td>Incidente de seguridad</td><td>Una brecha real en el flujo de pagos.</td></tr>
+            <tr><td>Crecimiento de demanda</td><td>Aumento de +30% en pedidos mensuales.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note" style="margin-top:12px">Cada decisión futura que surja de estos disparadores se registra con la misma plantilla de ADR usada arriba (Contexto, Problema, Decisión, Alternativas, Consecuencias) — nunca queda como una plantilla en blanco.</p>
+
+      <div class="callout" style="margin-top:20px">
+        <p><strong>Lo que se califica en cero:</strong> principios o estándares genéricos de manual sin aterrizar en el proyecto, ADR sin llenar o hipotéticas, y documentos de gobernanza copiados sin relación con el cliente real.</p>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <div class="wrap">
+    <p>AREM · Módulo 9 · Simulación de Comité de Arquitectura · Universidad de La Sabana</p>
+  </div>
+</footer>
+
+<script>
+function esc(s){ return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
+
+/* ============================================================
+   Cadena: 4 actos del pitch
+   ============================================================ */
+const ACTS = [
+  {n:"Acto 1", t:"Problema",
+   q:"¿Qué necesita el cliente y por qué es urgente?",
+   c:"FarmApp pierde ventas cuando el inventario del canal digital no refleja el inventario real de las tiendas físicas, generando pedidos que no se pueden despachar.",
+   src:"Se alimenta de Taller 1 (proceso actual) y Taller 2 (contexto de negocio). Evidencia a mostrar: el proceso \"Compra Online\" (vista de negocio, Taller 1/7) con el punto de falla resaltado."},
+  {n:"Acto 2", t:"Análisis",
+   q:"¿Cómo está hoy la arquitectura y qué riesgos tiene?",
+   c:"La arquitectura actual sincroniza el inventario entre el POS y la Plataforma E-commerce a través de la Base de Datos Replicada con varias horas de retraso; en horas pico, ese retraso es la causa raíz de los pedidos fallidos.",
+   src:"Se alimenta de Taller 3 (C1/C2), Taller 4 (infraestructura), Taller 5 (STRIDE) y Taller 6 (normatividad). Evidencia a mostrar: el mapa de infraestructura (Taller 4/7) con el componente de sincronización marcado como cuello de botella."},
+  {n:"Acto 3", t:"Solución",
+   q:"¿Qué se propone y por qué es la mejor alternativa?",
+   c:"Se propone sincronización casi en tiempo real (captura de cambios, CDC) entre el POS y la plataforma e-commerce, priorizada sobre alternativas más costosas por su menor impacto en el sistema heredado.",
+   src:"Se alimenta de Taller 7 (Opportunities & Solutions: TO-BE y brechas) y Taller 8 (integración de vistas). Evidencia a mostrar: la nueva conexión propuesta entre POS y e-commerce en el tablero integrado (Taller 8)."},
+  {n:"Acto 4", t:"Plan de Implementación",
+   q:"¿Cómo y en qué orden se llega de lo actual a lo propuesto?",
+   c:"La solución se ejecuta en 4 fases, empezando por el ajuste de consentimiento legal (bajo esfuerzo, corrige una brecha de cumplimiento) y terminando por la redundancia del balanceador (mayor esfuerzo, menor probabilidad de ocurrencia).",
+   src:"Se alimenta de los riesgos priorizados (matriz de 7 dominios) y de la solución del Acto 3. Evidencia a mostrar: el roadmap de fases con su línea de tiempo (quick win → corto → mediano → largo plazo)."}
+];
+
+const actChain = document.getElementById("actChain");
+ACTS.forEach((a,i)=>{
+  const b = document.createElement("button");
+  b.type = "button";
+  b.setAttribute("aria-pressed", String(i===0));
+  b.innerHTML = `<span class="cn">${esc(a.n)}</span><span class="ct">${esc(a.t)}</span>`;
+  b.addEventListener("click", ()=>{
+    [...actChain.children].forEach(c=>c.setAttribute("aria-pressed","false"));
+    b.setAttribute("aria-pressed","true");
+    showAct(i);
+  });
+  actChain.appendChild(b);
+});
+
+function showAct(i){
+  const a = ACTS[i];
+  document.getElementById("actDetail").innerHTML =
+    `<span class="lbl">${esc(a.n)} · ${esc(a.q)}</span>
+     <h3>${esc(a.t)}</h3>
+     <p>${esc(a.c)}</p>
+     <p class="ex">${esc(a.src)}</p>`;
+}
+
+/* ============================================================
+   Cadena: preguntas de defensa anticipadas
+   ============================================================ */
+const QUESTIONS = [
+  {ref:"Pregunta 01", short:"¿Por qué nube híbrida y no todo a la nube pública?",
+   q:"¿Por qué no migraron todo a la nube pública en vez de mantener la nube híbrida?",
+   ev:"Taller 4 · Vista de infraestructura",
+   a:"El Taller 4 identificó que los servidores regionales ya cumplen el SLA de latencia local; migrar todo implicaría reescribir el sistema POS heredado sin un beneficio claro a corto plazo."},
+  {ref:"Pregunta 02", short:"¿Cómo garantizan el cumplimiento de la Ley 1581?",
+   q:"¿Cómo garantizan el cumplimiento de la Ley 1581 con el nuevo flujo de datos?",
+   ev:"Taller 6 · Normatividad",
+   a:"El Taller 6 identificó la brecha de consentimiento explícito; por eso es el quick win del plan de implementación, no algo pospuesto para el año siguiente."},
+  {ref:"Pregunta 03", short:"¿Por qué el mayor riesgo no se corrige primero?",
+   q:"¿Por qué la corrección del mayor riesgo (sincronización de inventario) no es lo primero que hacen?",
+   ev:"Matriz de riesgos (prioridad 1) + Plan de Implementación",
+   a:"Es la fase de mayor esfuerzo de desarrollo; empezar por los quick wins de bajo esfuerzo genera confianza y resultados visibles mientras se prepara la fase más compleja."}
+];
+
+const qChain = document.getElementById("qChain");
+QUESTIONS.forEach((item,i)=>{
+  const b = document.createElement("button");
+  b.type = "button";
+  b.setAttribute("aria-pressed", String(i===0));
+  b.innerHTML = `<span class="cn">${esc(item.ref)}</span><span class="ct">${esc(item.short)}</span>`;
+  b.addEventListener("click", ()=>{
+    [...qChain.children].forEach(c=>c.setAttribute("aria-pressed","false"));
+    b.setAttribute("aria-pressed","true");
+    showQuestion(i);
+  });
+  qChain.appendChild(b);
+});
+
+function showQuestion(i){
+  const item = QUESTIONS[i];
+  document.getElementById("qDetail").innerHTML =
+    `<span class="lbl">Pregunta del panel</span>
+     <h3>${esc(item.q)}</h3>
+     <span class="lbl">Evidencia</span>
+     <p class="ex">${esc(item.ev)}</p>
+     <span class="lbl">Respuesta preparada</span>
+     <p class="ans">${esc(item.a)}</p>`;
+}
+
+/* ============================================================
+   Principios arquitectónicos
+   ============================================================ */
+const PRINCIPLES = [
+  {t:"API First", e:"Toda integración entre sistemas (POS, e-commerce, pasarela de pago, logística) se expone y se consume mediante APIs versionadas y documentadas, en vez de acceso directo a bases de datos o archivos planos.",
+   j:"La brecha central del Taller 7 (inventario desincronizado) existe porque hoy POS y e-commerce se comunican vía base de datos replicada, no vía API; este principio es la precondición de la sincronización CDC (ADR #1)."},
+  {t:"Security by Design", e:"La autenticación, el cifrado y la gestión de consentimiento se incorporan desde el diseño de cada componente nuevo, no se agregan después como parche.",
+   j:"El Taller 5 (STRIDE) identificó la exposición de datos de pago como riesgo Alto; este principio evita que los nuevos componentes de sincronización repitan ese error."},
+  {t:"Cloud First / Escalabilidad", e:"Todo componente nuevo se diseña preferentemente para la infraestructura de nube híbrida ya definida, con capacidad de escalar horizontalmente ante picos de demanda.",
+   j:"El Taller 4 definió la arquitectura de nube híbrida de FarmApp; este principio asegura que los componentes nuevos (gateway de integración, pipeline de CDC) la respeten en vez de crear una isla de infraestructura aparte."},
+  {t:"Loose Coupling", e:"Los sistemas se comunican mediante interfaces y eventos bien definidos, evitando integraciones punto a punto fuertemente acopladas.",
+   j:"Sostiene técnicamente la decisión de reemplazar la base de datos replicada por eventos de cambio (ADR #1), reduciendo el riesgo de que un cambio en el POS rompa el e-commerce y viceversa."}
+];
+
+const grid = document.getElementById("principlesGrid");
+PRINCIPLES.forEach(p=>{
+  const div = document.createElement("div");
+  div.className = "block inkline";
+  div.innerHTML = `<span class="tag">Principio</span><h3>${esc(p.t)}</h3><p>${esc(p.e)}</p><p style="margin-top:8px"><strong style="color:var(--ink)">En el proyecto:</strong> ${esc(p.j)}</p>`;
+  grid.appendChild(div);
+});
+
+/* arranque */
+showAct(0);
+showQuestion(0);
+</script>
+</body>
+</html>

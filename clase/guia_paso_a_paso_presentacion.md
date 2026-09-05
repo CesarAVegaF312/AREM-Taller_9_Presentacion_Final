@@ -91,6 +91,8 @@ gantt
 
 ### Paso 5 — Preparar la defensa
 
+> Vea la [versión visual interactiva](visualizacion-presentacion-final.html) de este pitch y de las preguntas de defensa, con el mismo contenido de esta guía.
+
 | Pregunta probable del panel | Respuesta basada en evidencia |
 |---|---|
 | "¿Por qué no migraron todo a la nube pública en vez de mantener la nube híbrida?" | "El Taller 4 identificó que los servidores regionales ya cumplen el SLA de latencia local; migrar todo implicaría reescribir el sistema POS heredado sin un beneficio claro a corto plazo." |
