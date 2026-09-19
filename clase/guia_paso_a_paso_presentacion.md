@@ -164,18 +164,7 @@ Defina, con base en el proyecto real del equipo:
 
 **Reglas de vida de una ADR:** se maneja por **estados** (Propuesta → Aceptada → Reemplazada por ADR-00X), nunca se edita para cambiarle el sentido y no se borra (el error también es historia); vive en el repositorio junto al código y se escribe solo para decisiones difíciles o costosas de revertir — documentar todo equivale a no documentar nada. (El módulo presenta la ADR con 4 secciones: Contexto, Alternativas, Decisión, Consecuencias; en este taller el campo *Problema* puede leerse como parte del Contexto, pero se conserva por la plantilla oficial de la entrega.)
 
-**Cómo se decide (marco de 8 pasos)**, útil para llegar a cada ADR con criterio y no por intuición:
-
-| # | Paso | Qué exige |
-|---|---|---|
-| 1 | Enunciar el problema | En términos de impacto, no de solución («perdemos 25 millones al año por facturación», no «necesitamos un nuevo sistema de facturación») |
-| 2 | Ubicar el momento | El último momento responsable para decidir: antes de tiempo cierra opciones; tarde bloquea al equipo |
-| 3 | Definir criterios | Ponderados según lo que importa al negocio |
-| 4 | Generar opciones | Más de una, no más de tres, alguna radicalmente distinta |
-| 5 | Pedir consejo | A quien sabe y a quien le afecta |
-| 6 | Analizar trade-offs | Puntuar cada opción contra cada criterio |
-| 7 | Decidir | Y comunicarlo con su razón |
-| 8 | Reevaluar | Fijar cuándo se vuelve a mirar la decisión |
+**Cómo se llega a la decisión.** El método para decidir (marco de 8 pasos con matriz de decisión ponderada) se trabaja en el [Taller 7, sección 2.1](https://github.com/CesarAVegaF312/AREM-Taller_7_Opportunities_Solutions/blob/main/clase/guia_paso_a_paso_opportunities_solutions.md), porque ahí es donde se elige entre opciones de mejora. Aquí la ADR **registra** esa decisión: la matriz del Taller 7 aporta el Contexto, las alternativas descartadas con su razón y el trade-off aceptado.
 
 Un *trade-off* es sacrificar conscientemente un atributo por otro más crítico (ejemplo del módulo: en un carrito de compras en Black Friday se elige alta disponibilidad y se sacrifica consistencia inmediata del inventario). Toda ADR de su entrega debería nombrar qué se sacrificó.
 
