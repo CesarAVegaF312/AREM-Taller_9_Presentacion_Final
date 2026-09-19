@@ -1,22 +1,22 @@
-# 🛠️ Taller 9: Simulación de Comité de Arquitectura
+# Taller 9: Simulación de Comité de Arquitectura
 
-## 🎯 Objetivo
+## Objetivo
 
 Presentar la solución arquitectónica final del cliente real ante un panel simulado de evaluación, defendiendo las decisiones de diseño tomadas durante el curso con base en vistas, buenas prácticas e investigación previa — presentando un plan de implementación que traduzca la solución en fases ejecutables, y dejando definidos los mecanismos de gobernanza y el procedimiento de actualización de la arquitectura, para que el cliente se vaya con una ruta clara de "cómo" y de "qué pasa después", no solo con el diseño.
 
 ---
 
-## 📘 Guía paso a paso
+## Guía paso a paso
 
 Antes de preparar la presentación, revise la [**Guía Paso a Paso: Simulación de Comité de Arquitectura**](clase/guia_paso_a_paso_presentacion.md). Incluye de qué taller se alimenta cada parte de la narrativa, la metodología de 6 pasos para pasar de todo el trabajo del curso a una presentación de 10 minutos defendible (incluyendo cómo construir el plan de implementación), un ejemplo completo (narrativa, matriz de riesgos, roadmap y preguntas anticipadas) sobre el caso de FarmApp, y una tabla de errores comunes.
 
-### 🖼️ Versión visual: Hoja de cierre y gobernanza
+### Versión visual: Hoja de cierre y gobernanza
 
 [`clase/visualizacion-presentacion-final.html`](clase/visualizacion-presentacion-final.html) es una página interactiva autocontenida sobre el ejemplo guiado de FarmApp: una cadena clickeable con los 4 actos del pitch (Problema/Análisis/Solución/Plan de Implementación) mostrando de qué taller sale la evidencia de cada uno, otra cadena con las 3 preguntas de defensa anticipadas (pregunta/evidencia/respuesta), los 4 principios arquitectónicos y las 2 ADR reales (sincronización CDC y balanceador redundante), y la matriz de riesgos de 7 dominios junto con el plan de gobernanza y el procedimiento de actualización. GitHub no la renderiza interactiva desde la vista de archivo; para verla:
 - Descargue el archivo y ábralo con doble clic (funciona sin conexión, es HTML plano), o
 - Pegue esta URL en [htmlpreview.github.io](https://htmlpreview.github.io/): `https://raw.githubusercontent.com/CesarAVegaF312/AREM-Taller_9_Presentacion_Final/main/clase/visualizacion-presentacion-final.html`
 
-## 🎓 Contexto del Taller
+## Contexto del Taller
 
 En este taller final, cada equipo debe presentar la solución arquitectónica completa diseñada para su cliente real. Se espera que articulen de forma clara las decisiones tomadas, las vistas generadas durante el curso y cómo estas responden a los objetivos estratégicos identificados. El panel de evaluación simula un comité técnico de arquitectura, como ocurre en ambientes corporativos reales, y busca evaluar tanto la solidez técnica como la capacidad argumentativa y comunicativa del equipo. Este espacio de simulación es clave para consolidar el aprendizaje aplicado del curso.
 
@@ -30,7 +30,7 @@ Durante la presentación se evaluarán:
 
 ---
 
-## 🧪 Parte 1: Trabajo en Clase
+## Parte 1: Trabajo en Clase
 
 Durante la clase se espera que el equipo:
 
@@ -48,7 +48,7 @@ Siga la metodología de 6 pasos de la [guía paso a paso](clase/guia_paso_a_paso
 
 ---
 
-## 🧠 Parte 2: Entrega Final
+## Parte 2: Entrega Final
 
 Después de la presentación, el equipo debe:
 
@@ -62,7 +62,7 @@ Después de la presentación, el equipo debe:
 
 ---
 
-## 📁 Estructura esperada del repositorio
+## Estructura esperada del repositorio
 
 ```text
 taller-09-presentacion-final/
@@ -92,11 +92,11 @@ taller-09-presentacion-final/
 
 ---
 
-## ⚠️ Errores comunes
+## Errores comunes
 
 Antes de presentar, compare su narrativa, matriz y plan de implementación contra los errores más frecuentes (mostrar todos los diagramas del curso, matriz de riesgos hecha desde cero, solución sin plan de implementación, fases ordenadas solo por riesgo sin considerar esfuerzo) documentados en la [sección 4 de la guía paso a paso](clase/guia_paso_a_paso_presentacion.md#4-errores-comunes-a-evitar).
 
-## 📤 Entregables
+## Entregables
 
 - Presentación ejecutiva (PDF o PowerPoint)
 - Matriz de riesgos arquitectónicos
@@ -109,7 +109,7 @@ Antes de presentar, compare su narrativa, matriz y plan de implementación contr
 
 ---
 
-## 📊 Rúbrica de Evaluación
+## Rúbrica de Evaluación
 
 | Criterio                            | Excelente (5)                                                           | Aceptable (3) / Insuficiente (1–2)                     |
 |-------------------------------------|--------------------------------------------------------------------------|----------------------------------------------------------|
@@ -122,6 +122,6 @@ Antes de presentar, compare su narrativa, matriz y plan de implementación contr
 
 ---
 
-## ✅ Licencia
+## Licencia
 
 Este taller hace parte del curso de Arquitectura Empresarial - Universidad de La Sabana. Uso académico bajo licencia MIT.
