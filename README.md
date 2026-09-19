@@ -42,7 +42,7 @@ Siga la metodología de 6 pasos de la [guía paso a paso](clase/guia_paso_a_paso
 4. Construya el plan de implementación: traduzca la solución en fases (quick win, corto, mediano y largo plazo), cada una trazada a un riesgo específico.
 5. Anticipe las preguntas críticas del panel y prepare respuestas basadas en evidencia.
 6. Ensaye contra el tiempo (máximo 10 minutos) y valide con la [checklist de autoevaluación](clase/guia_paso_a_paso_presentacion.md#5-checklist-de-autoevaluación-antes-de-entregar).
-7. Defina los Principios Arquitectónicos, los Estándares tecnológicos y al menos 2 ADR reales del proyecto (sección 6.0 de la guía) — no se limite a diligenciar una plantilla en blanco.
+7. Defina los Principios Arquitectónicos, los Estándares tecnológicos y al menos 2 ADR reales del proyecto (sección 6.0 de la guía) — no se limite a diligenciar una plantilla en blanco. Cada principio debe permitir decir «no» a algo concreto, cada estándar debe declarar su razón, y cada ADR debe incluir las alternativas descartadas y consecuencias negativas (reglas de calidad y marco de decisión de 8 pasos en la misma sección, tomados del Módulo 8 de Gobierno de Arquitectura).
 
 - Asista a las presentaciones de otros equipos y prepare retroalimentación (peer review).
 
