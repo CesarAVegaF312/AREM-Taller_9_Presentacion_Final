@@ -152,6 +152,33 @@ Defina, con base en el proyecto real del equipo:
 2. **Estándares Tecnológicos** — lenguaje o framework, tipo de comunicación (REST, eventos) e infraestructura.
 3. **Decisiones Arquitectónicas (ADR)** — al menos 2 decisiones importantes ya tomadas en el proyecto, llenas con Contexto, Problema, Decisión, Alternativas y Consecuencias — no una plantilla en blanco.
 
+**Reglas de calidad (del Módulo 8, Gobierno de Arquitectura).** El gobierno no es trámite: las reglas acotan la variabilidad y por eso permiten decidir rápido. Cada artefacto tiene una prueba concreta:
+
+| Artefacto | Prueba de calidad | Error que el comité va a buscar |
+|---|---|---|
+| Principio | Redáctelo con **nombre, declaración e implicación**. Un principio bien escrito permite decir «no» a algo concreto; si no descarta ninguna opción, es una frase bonita. | Principios que no descartan ninguna opción |
+| Estándar | Declare la elección **y la razón**. El estándar debe tener una puerta: las excepciones justificadas se aprueban mediante una ADR. Un catálogo cerrado sin excepciones empuja a los equipos a construir por fuera del radar. | Estándares sin razón declarada |
+| ADR | Las alternativas descartadas están escritas **con su razón**. Consecuencias positivas **y** negativas (la deuda técnica que se acepta). | ADR sin alternativas descartadas; consecuencias solo positivas |
+
+**Prueba de la escalera (governance stack).** Cada nivel restringe al de abajo: estrategia del negocio → principios → estándares → decisiones (ADR). Tome un estándar de su proyecto y suba: ¿de qué principio se desprende?, ¿y ese principio de qué objetivo de negocio? Si la cadena se rompe, el estándar sobra.
+
+**Reglas de vida de una ADR:** se maneja por **estados** (Propuesta → Aceptada → Reemplazada por ADR-00X), nunca se edita para cambiarle el sentido y no se borra (el error también es historia); vive en el repositorio junto al código y se escribe solo para decisiones difíciles o costosas de revertir — documentar todo equivale a no documentar nada. (El módulo presenta la ADR con 4 secciones: Contexto, Alternativas, Decisión, Consecuencias; en este taller el campo *Problema* puede leerse como parte del Contexto, pero se conserva por la plantilla oficial de la entrega.)
+
+**Cómo se decide (marco de 8 pasos)**, útil para llegar a cada ADR con criterio y no por intuición:
+
+| # | Paso | Qué exige |
+|---|---|---|
+| 1 | Enunciar el problema | En términos de impacto, no de solución («perdemos 25 millones al año por facturación», no «necesitamos un nuevo sistema de facturación») |
+| 2 | Ubicar el momento | El último momento responsable para decidir: antes de tiempo cierra opciones; tarde bloquea al equipo |
+| 3 | Definir criterios | Ponderados según lo que importa al negocio |
+| 4 | Generar opciones | Más de una, no más de tres, alguna radicalmente distinta |
+| 5 | Pedir consejo | A quien sabe y a quien le afecta |
+| 6 | Analizar trade-offs | Puntuar cada opción contra cada criterio |
+| 7 | Decidir | Y comunicarlo con su razón |
+| 8 | Reevaluar | Fijar cuándo se vuelve a mirar la decisión |
+
+Un *trade-off* es sacrificar conscientemente un atributo por otro más crítico (ejemplo del módulo: en un carrito de compras en Black Friday se elige alta disponibilidad y se sacrifica consistencia inmediata del inventario). Toda ADR de su entrega debería nombrar qué se sacrificó.
+
 **Ejemplo — Principios Arquitectónicos de FarmApp:**
 
 | Principio | Explicación | Justificación en el proyecto |
@@ -246,6 +273,9 @@ A diferencia del Plan de Implementación (que ejecuta un cambio ya decidido), es
 - [ ] Están definidos al menos 3 principios arquitectónicos, cada uno explicado y justificado en el proyecto (no genéricos de manual).
 - [ ] Los 3 estándares (lenguaje/framework, comunicación, infraestructura) tienen elecciones concretas para el proyecto, no solo la categoría.
 - [ ] Existen al menos 2 ADR reales y llenos (Contexto, Problema, Decisión, Alternativas, Consecuencias), no una plantilla en blanco.
+- [ ] Cada principio permite decir «no» a algo concreto, y cada estándar declara su razón.
+- [ ] Cada ADR incluye las alternativas descartadas con su razón y consecuencias negativas (no solo positivas), y nombra el trade-off aceptado.
+- [ ] Cada estándar se puede rastrear hacia arriba: estándar → principio → objetivo de negocio.
 - [ ] El plan de gobernanza define quién revisa la implementación y con qué frecuencia.
 - [ ] El criterio de conformidad está trazado al TO-BE del Taller 7, no es una opinión subjetiva.
 - [ ] El procedimiento de cambios define disparadores concretos, no solo "cuando sea necesario".
