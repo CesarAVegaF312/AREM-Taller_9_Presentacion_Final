@@ -1,12 +1,12 @@
-# 📄 Resumen Ejecutivo del Proyecto Arquitectónico
+# Resumen Ejecutivo del Proyecto Arquitectónico
 
-## 🏢 Nombre del Cliente
+## Nombre del Cliente
 _Escriba aquí el nombre completo del cliente real al que se le aplicó el análisis arquitectónico._
 
-## 🎯 Objetivo General del Proyecto
+## Objetivo General del Proyecto
 Describir brevemente el propósito del trabajo realizado con el cliente, los retos arquitectónicos identificados y el valor que se buscó aportar con las soluciones propuestas.
 
-## 🧱 Vistas Arquitectónicas Cubiertas
+## Vistas Arquitectónicas Cubiertas
 
 | Vista                  | Alcance de la Solución                      |
 |------------------------|---------------------------------------------|
@@ -17,19 +17,19 @@ Describir brevemente el propósito del trabajo realizado con el cliente, los ret
 | Seguridad              | (Ej. Análisis STRIDE y controles propuestos) |
 | Cumplimiento Normativo | (Ej. Checklist legal según Ley 1581 e ISO 27001) |
 
-## 🧩 Hallazgos Clave
+## Hallazgos Clave
 
-- ❗ Se identificó que [ejemplo: el proceso de registro de usuarios presenta exposición innecesaria de datos personales].
-- 🔄 La arquitectura actual presenta [ejemplo: duplicidad de servicios en infraestructura on-premise].
-- 📌 Existen oportunidades de mejora en [ejemplo: integración entre sistemas de pagos y CRM].
+- Se identificó que [ejemplo: el proceso de registro de usuarios presenta exposición innecesaria de datos personales].
+- La arquitectura actual presenta [ejemplo: duplicidad de servicios en infraestructura on-premise].
+- Existen oportunidades de mejora en [ejemplo: integración entre sistemas de pagos y CRM].
 
-## 🚀 Recomendaciones Principales
+## Recomendaciones Principales
 
 - Implementar [ejemplo: autenticación multifactor para usuarios externos].
 - Desacoplar [ejemplo: módulo de notificaciones para facilitar escalabilidad].
 - Cumplir con [ejemplo: políticas de retención de datos según la normatividad vigente].
 
-## 🗺️ Plan de Implementación (resumen)
+## Plan de Implementación (resumen)
 
 | Fase | Qué se implementa | Duración estimada |
 |---|---|---|
@@ -40,7 +40,7 @@ Describir brevemente el propósito del trabajo realizado con el cliente, los ret
 
 _Ver el detalle completo, con la relación de cada fase a los riesgos identificados en el curso, en [`entrega/plan-implementacion.md`](../plantillas/plantilla_plan_implementacion.md)._
 
-## 💡 Reflexión Final
+## Reflexión Final
 
 Este ejercicio permitió al equipo aplicar de manera práctica los conceptos de arquitectura empresarial en un entorno real, desarrollando habilidades de análisis estructurado, modelado, documentación y comunicación ejecutiva de soluciones tecnológicas.
 

@@ -1,4 +1,4 @@
-# 🧭 Guía Paso a Paso: Simulación de Comité de Arquitectura
+# Guía Paso a Paso: Simulación de Comité de Arquitectura
 
 Esta guía complementa el `README.md` del taller. A diferencia de los talleres anteriores, aquí no se construye una vista nueva ni se usa un caso base de clase: se toma **todo** el trabajo hecho para el cliente real (Talleres 1 a 8) y se condensa en una presentación ejecutiva de máximo 10 minutos, defendible ante un panel.
 
@@ -279,9 +279,9 @@ Cierra la cadena que empezó en el Taller 7: cada fase del Plan de Implementaci�
 
 ```mermaid
 flowchart LR
-    gap(["⚠️ Gap: sincronización de inventario"])
-    wp["📦 Work Package: Sincronización CDC POS-Ecommerce"]
-    tobe["📍 Plateau: FarmApp TO-BE"]
+    gap(["Gap: sincronización de inventario"])
+    wp["Work Package: Sincronización CDC POS-Ecommerce"]
+    tobe["Plateau: FarmApp TO-BE"]
 
     gap -->|"es resuelto por"| wp
     wp -->|"produce"| tobe

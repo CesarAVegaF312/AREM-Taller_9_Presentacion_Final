@@ -1,18 +1,18 @@
-# 📄 Plan de Gobernanza de la Implementación
+# Plan de Gobernanza de la Implementación
 
-## 🔖 Cliente
+## Cliente
 _Escriba aquí el nombre del cliente real._
 
-## 👥 Integrantes del equipo
+## Integrantes del equipo
 - Nombre 1 (correo o usuario GitHub)
 - Nombre 2
 - Nombre 3
 
-## 🎯 Propósito de este documento
+## Propósito de este documento
 
 Explique en 2-3 líneas quién supervisa la ejecución del Plan de Implementación (`plan-implementacion.md`) mientras se lleva a cabo, y qué pasa si una fase se desvía de lo aprobado.
 
-## 🧭 Principios Arquitectónicos
+## Principios Arquitectónicos
 
 Defina mínimo 3 principios que orientan las decisiones de diseño del proyecto. No copie definiciones de manual: explique qué significa cada uno para este proyecto específico y por qué se adoptó (ej. API First, Security by Design, Loose Coupling, Cloud First / Escalabilidad, u otros pertinentes a su cliente real).
 
@@ -22,7 +22,7 @@ Defina mínimo 3 principios que orientan las decisiones de diseño del proyecto.
 | | | |
 | | | |
 
-## 🧱 Estándares Tecnológicos
+## Estándares Tecnológicos
 
 Defina los estándares tecnológicos autorizados para este proyecto, con elecciones concretas (no solo la categoría).
 
@@ -32,22 +32,22 @@ Defina los estándares tecnológicos autorizados para este proyecto, con eleccio
 | Tipo de comunicación (REST, eventos, etc.) | | |
 | Infraestructura | | |
 
-## 🧑‍⚖️ Mecanismo de gobierno
+## Mecanismo de gobierno
 
 | Rol | Responsabilidad | Persona / equipo sugerido |
 |---|---|---|
 | | | |
 | | | |
 
-## 📆 Cadencia de seguimiento
+## Cadencia de seguimiento
 
 Indique cada cuánto se revisa el avance del roadmap (ej. reunión mensual del comité de arquitectura).
 
-## ✅ Criterio de conformidad
+## Criterio de conformidad
 
 Explique cómo se verifica que cada fase implementada respeta el diseño TO-BE aprobado en el Taller 7 (Opportunities & Solutions). Un criterio de conformidad debe ser verificable, no una opinión.
 
-## 🚨 Escalamiento
+## Escalamiento
 
 Defina qué pasa cuando una fase necesita desviarse del diseño aprobado: quién propone la excepción, quién la evalúa y quién la autoriza.
 
