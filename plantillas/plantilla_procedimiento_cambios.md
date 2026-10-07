@@ -36,21 +36,25 @@ Complete al menos 2 ADR reales de su proyecto: decisiones arquitectónicas impor
 |---|---|
 | Título | |
 | Estado | Propuesta / Aceptada / Reemplazada |
+| Fecha de propuesta | |
+| Fecha de dictamen | |
 | Contexto | |
 | Problema | |
 | Decisión | |
-| Alternativas consideradas | |
-| Consecuencias | |
+| Alternativas consideradas | (con la razón por la que se descartó cada una) |
+| Consecuencias | (+) qué se gana · (−) qué se pierde o qué deuda se acepta · trade-off aceptado |
 
 | Campo | ADR #2 |
 |---|---|
 | Título | |
 | Estado | Propuesta / Aceptada / Reemplazada |
+| Fecha de propuesta | |
+| Fecha de dictamen | |
 | Contexto | |
 | Problema | |
 | Decisión | |
-| Alternativas consideradas | |
-| Consecuencias | |
+| Alternativas consideradas | (con la razón por la que se descartó cada una) |
+| Consecuencias | (+) qué se gana · (−) qué se pierde o qué deuda se acepta · trade-off aceptado |
 
 Puede agregar tablas adicionales con el mismo formato si su proyecto tiene más de 2 decisiones importantes que documentar.
 

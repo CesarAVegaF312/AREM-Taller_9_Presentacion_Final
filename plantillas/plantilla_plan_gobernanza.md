@@ -51,6 +51,16 @@ Explique cómo se verifica que cada fase implementada respeta el diseño TO-BE a
 
 Defina qué pasa cuando una fase necesita desviarse del diseño aprobado: quién propone la excepción, quién la evalúa y quién la autoriza.
 
+## Métricas de gobierno
+
+Ver la sección 6.2.1 de la guía. Defina 3 métricas. Cada una se ata a un principio de este documento, se calcula con una fuente que el cliente ya tiene hoy y tiene un umbral que obliga al comité a actuar. **Una de las tres debe medir al propio comité** (por ejemplo, el tiempo que tarda en dictaminar una excepción). Si una métrica no tiene línea base porque su fuente empieza a existir con este plan, escríbalo así; no invente el valor.
+
+| Métrica | Qué mide (principio) | Fórmula | Fuente que ya existe | Línea base | Umbral |
+|---|---|---|---|---|---|
+| M1 | | | | | |
+| M2 | | | | | |
+| M3 · (mide al comité) | | | | | |
+
 ---
 
 _Este documento hace parte de la entrega final del Taller 9 del curso AREM (Arquitectura Empresarial) - Universidad de La Sabana._

@@ -10,7 +10,7 @@ La presentación se organiza en 4 actos. Cada uno se alimenta de talleres espec�
 
 | Acto | Pregunta que responde | Se alimenta de |
 |---|---|---|
-| 1. Problema | ¿Qué necesita el cliente y por qué es urgente? | Taller 1 (proceso actual), Taller 2 (contexto de negocio) |
+| 1. Problema | ¿Qué necesita el cliente y por qué es urgente? | Taller 1 (proceso actual), Taller 2 (modelo de información y diagrama de contexto) |
 | 2. Análisis | ¿Cómo está hoy la arquitectura y qué riesgos tiene? | Taller 3 (C1/C2), Taller 4 (infraestructura), Taller 5 (STRIDE), Taller 6 (normatividad) |
 | 3. Solución | ¿Qué se propone y por qué es la mejor alternativa? | Taller 7 (Opportunities & Solutions: TO-BE y brechas), Taller 8 (integración de vistas) |
 | 4. Plan de Implementación | ¿Cómo y en qué orden se llega de lo actual a lo propuesto? | Riesgos priorizados (Paso 3 de esta guía) + Solución (Acto 3) |
@@ -21,7 +21,7 @@ La presentación se organiza en 4 actos. Cada uno se alimenta de talleres espec�
 
 1. **Estructurar la narrativa** — organice todo el trabajo del curso en la historia de 4 actos: problema → análisis → solución → plan de implementación.
 2. **Seleccionar la evidencia clave por acto** — de cada vista ya construida, elija solo lo que sostiene ese punto de la narrativa; en 10 minutos no cabe todo.
-3. **Construir la matriz de riesgos arquitectónicos** — consolide (no repita desde cero) los riesgos ya identificados en el curso (Infraestructura, STRIDE/Seguridad, Normatividad) y complételos con los dominios que un análisis puramente técnico suele dejar por fuera (Negocio, Procesos, Datos, Gobierno TI), siguiendo los 7 dominios de riesgo de arquitectura empresarial, priorizados en una sola matriz ejecutiva.
+3. **Construir la matriz de riesgos arquitectónicos** — consolide (no repita desde cero) los riesgos ya identificados en el curso (Infraestructura, STRIDE/Seguridad, Normatividad) y complételos con los dominios que un análisis puramente técnico suele dejar por fuera (Negocio, Procesos, Datos, Aplicaciones), siguiendo los 7 dominios de riesgo de arquitectura empresarial, priorizados en una sola matriz ejecutiva.
 4. **Construir el plan de implementación** — traduzca la solución (Acto 3) en fases ejecutables (quick win, corto, mediano y largo plazo), cada una trazable a un riesgo o brecha específico del Paso 3, con esfuerzo, duración y responsable sugerido.
 5. **Preparar la defensa** — anticipe las preguntas más probables del panel (incluyendo sobre la viabilidad del plan de implementación) y prepare una respuesta basada en evidencia del curso, no en opinión.
 6. **Ensayar contra el tiempo y ajustar** — practique la presentación completa cronometrada y recorte contenido (no velocidad de habla) hasta que quepa en el tiempo asignado.
@@ -30,14 +30,14 @@ La presentación se organiza en 4 actos. Cada uno se alimenta de talleres espec�
 
 ## 3. Ejemplo guiado: Defensa de la solución de FarmApp
 
-Continuando el ejemplo del Taller 7 (el hilo de negocio "Compra Online" de FarmApp), así se vería la síntesis para el comité.
+Continuando el ejemplo del Taller 8 (el hilo de negocio "Compra Online" de FarmApp), así se vería la síntesis para el comité. FarmApp es un caso de clase: cuando el ejemplo dice que un hallazgo salió del Taller 4, 5 o 6, indica de qué taller saldría ese hallazgo en un cliente real.
 
 ### Paso 1 — Estructurar la narrativa
 
 - **Acto 1 — Problema:** "FarmApp pierde ventas cuando el inventario del canal digital no refleja el inventario real de las tiendas físicas, generando pedidos que no se pueden despachar."
 - **Acto 2 — Análisis:** "La arquitectura actual sincroniza el inventario entre el POS y la Plataforma E-commerce a través de la Base de Datos Replicada con varias horas de retraso; en horas pico, ese retraso es la causa raíz de los pedidos fallidos."
 - **Acto 3 — Solución:** "Se propone sincronización casi en tiempo real (captura de cambios) entre el POS y la plataforma e-commerce, priorizada sobre alternativas más costosas por su menor impacto en el sistema heredado."
-- **Acto 4 — Plan de Implementación:** "La solución se ejecuta en 4 fases, empezando por el ajuste de consentimiento legal (bajo esfuerzo, corrige una brecha de cumplimiento) y terminando por la redundancia del balanceador (mayor esfuerzo, menor probabilidad de ocurrencia)."
+- **Acto 4 — Plan de Implementación:** "La solución se ejecuta en 4 fases, empezando por el ajuste de consentimiento legal (bajo esfuerzo, corrige una brecha de cumplimiento) y terminando por la redundancia del balanceador (esfuerzo medio, pero el riesgo de menor probabilidad)."
 
 ### Paso 2 — Seleccionar la evidencia clave por acto
 
@@ -50,7 +50,9 @@ Continuando el ejemplo del Taller 7 (el hilo de negocio "Compra Online" de FarmA
 
 ### Paso 3 — Construir la matriz de riesgos arquitectónicos
 
-Las columnas siguen la plantilla oficial de la Guía Metodológica de Análisis de Riesgos en Arquitectura Empresarial del curso (`Riesgo | Causa | Impacto | Probabilidad | Arquitectura afectada | Mitigación`), con una columna adicional `Prioridad` al final porque el Plan de Implementación (Paso 4) necesita un orden para secuenciar las fases. Los 4 primeros riesgos vienen de Infraestructura, Seguridad (STRIDE) y Gobierno TI (Normatividad) — ya identificados en talleres anteriores; los 2 últimos formalizan riesgos de Negocio y de Datos/Procesos que un análisis puramente técnico suele dejar por fuera.
+Las columnas siguen la plantilla oficial de la [Guía Metodológica de Análisis de Riesgos en Arquitectura Empresarial](Guia_Metodologica_Analisis_Riesgos.pdf) del curso — que también describe los 7 dominios (Negocio, Procesos, Datos, Aplicaciones, Infraestructura, Seguridad, Gobierno TI) con sus preguntas guía — y están listas en la [plantilla de matriz de riesgos](../plantillas/plantilla_matriz_riesgos.xlsx) (`Riesgo | Causa | Impacto | Probabilidad | Arquitectura afectada | Mitigación`), con una columna adicional `Prioridad` porque el Plan de Implementación (Paso 4) necesita un orden para secuenciar las fases. La plantilla agrega además `ID`, `Origen` (de qué taller sale), `Nivel` (impacto × probabilidad, calculado) y `Fase del plan que lo mitiga`. Las filas están ordenadas por prioridad: cuatro riesgos vienen de hallazgos ya identificados en talleres anteriores (Infraestructura, Seguridad y Gobierno TI); los otros dos formalizan riesgos de Datos/Procesos y de Negocio que un análisis puramente técnico suele dejar por fuera.
+
+> **Escala.** En la clase del 24/10 el Risk Storming usa una matriz cualitativa de 2×2. Para la entrega use la escala de la plantilla: Impacto Bajo / Medio / Alto / Crítico, Probabilidad Baja / Media / Alta, y Nivel de 1 a 12. Un riesgo es **crítico** cuando su Nivel es 8 o más (la plantilla lo marca en rojo). En «Arquitectura afectada» puede combinar dos dominios (por ejemplo «Datos / Procesos»), como en la Guía Metodológica.
 
 | Riesgo | Causa | Impacto | Probabilidad | Arquitectura afectada | Mitigación | Prioridad |
 |---|---|---|---|---|---|---|
@@ -71,7 +73,7 @@ Se traducen en fases ejecutables los riesgos del Paso 3 que requieren una interv
 |---|---|---|---|---|---|
 | Quick win | Consentimiento explícito antes de procesar datos de pago | Incumplimiento Ley 1581 | Bajo | 0–1 mes | Producto / Legal |
 | Corto plazo | TLS en todos los subdominios y cifrado de datos de pago en tránsito | Exposición de datos de pago (STRIDE) | Medio | 1–3 meses | Seguridad |
-| Mediano plazo | Sincronización casi en tiempo real (CDC) entre POS y e-commerce | Retraso de sincronización de inventario | Alto | 3–6 meses | Plataforma |
+| Mediano plazo | Sincronización casi en tiempo real (CDC) entre POS y e-commerce, con reconciliación automática y alertas de discrepancia | Retraso de sincronización de inventario e inventario desincronizado (Datos / Procesos) | Alto | 3–6 meses | Plataforma |
 | Largo plazo | Redundancia del balanceador de carga | Punto único de falla | Medio | 6–12 meses | Infraestructura |
 
 ```mermaid
@@ -89,9 +91,37 @@ gantt
     Redundancia del balanceador :lp1, 2026-07-01, 180d
 ```
 
+#### 4.1 Gestión del cambio con las personas
+
+El roadmap anterior dice qué se construye y en qué orden, pero no quién tiene que cambiar su forma de trabajar para que funcione. Una solución técnicamente correcta fracasa igual si las personas que la usan siguen haciendo lo de antes "por si acaso". Este apartado no es la *Architecture Change Management* de la sección 6.3 (que trata de cómo se actualiza la **arquitectura** después): trata de cómo se lleva a **la gente** de lo actual a lo propuesto mientras se ejecuta el plan.
+
+**Paso A — Identifique a quién le cambia el trabajo.** Liste de 3 a 5 grupos afectados por las fases del plan. Incluya siempre al grupo cuya tarea cambia o desaparece (en FarmApp, el personal de tienda que hoy ajusta inventario a mano), no solo a la dirección.
+
+**Paso B — Diga qué pierde o teme cada grupo.** Cada grupo pierde algo, y eso es información: de ahí sale la resistencia que se espera, y de la resistencia sale la acción. Ubique a cada grupo en la rejilla de poder e interés (Alto / Medio / Bajo) para decidir con quién se negocia y a quién se informa.
+
+**Paso C — Defina comunicación y capacitación, con fecha y responsable.** Las dos: comunicar sin capacitar deja a la gente sabiendo que algo cambia pero sin saber hacerlo.
+
+| Grupo | Qué pierde o teme | Resistencia esperada | Poder / interés | Comunicación y capacitación | Cuándo | Responsable |
+|---|---|---|---|---|---|---|
+| Personal de tienda (cajeros POS) | Que el inventario en línea los haga responsables de cada descuadre | Seguir ajustando el stock a mano "por si acaso", lo que vuelve a desincronizar | Bajo / Alto | Explicar qué cambia en su cierre de caja; capacitación de 1 hora en el registro de ajustes de stock | Antes de la fase Mediano plazo | Operaciones de tiendas |
+| Área comercial del e-commerce | Perder ventas durante las ventanas de corte del CDC | Presionar para que no haya ventanas de corte en temporada alta | Alto / Alto | Calendario de cortes acordado por adelantado; tablero de pedidos fallidos para ver el efecto | Antes de cada corte | Producto |
+| Equipo de plataforma (soporte del POS heredado) | Que el CDC complique el soporte del POS | Dilatar la fase con dudas técnicas | Medio / Alto | Participar en la ADR #1; capacitación en el bus de eventos | Desde el quick win | Arquitecto líder |
+| Gerencia general | Invertir sin ver resultados | Aprobar solo lo que muestre ahorro rápido | Alto / Medio | Un informe de una página por fase con el resultado visible, no con el porcentaje de avance | Al cierre de cada fase | Arquitecto líder |
+
+**Paso D — Un resultado visible por fase, comprobado fuera de TI.** La urgencia no se construye con un discurso de lanzamiento sino con el primer resultado que alguien del negocio puede ver (adaptado de Kotter, 1996). Cada fase del plan debe dejar un resultado que compruebe alguien que no es de tecnología:
+
+| Fase | Resultado visible | Quién lo comprueba (fuera de TI) |
+|---|---|---|
+| Quick win | Ningún pago se procesa sin consentimiento registrado | Legal |
+| Corto plazo | El flujo de pagos pasa la revisión de seguridad sin hallazgos altos | Auditoría interna |
+| Mediano plazo | Los pedidos fallidos por falta de stock bajan en horas pico | Área comercial |
+| Largo plazo | La caída de un balanceador no detiene la venta en línea | Operaciones |
+
+> Si su cliente es pequeño (un emprendimiento con 3 personas), la tabla puede tener solo 2 o 3 grupos — no invente áreas que no existen. Lo que no puede faltar es la persona cuyo trabajo cambia.
+
 ### Paso 5 — Preparar la defensa
 
-> Vea la [versión visual interactiva](visualizacion-presentacion-final.html) de este pitch y de las preguntas de defensa, con el mismo contenido de esta guía.
+> Vea la [versión visual interactiva](visualizacion-presentacion-final.html) de este pitch y de las preguntas de defensa (resume los Pasos 1, 3 y 5 y la sección 6; el plan, la gestión del cambio, las métricas y las vistas ArchiMate están solo en esta guía).
 
 | Pregunta probable del panel | Respuesta basada en evidencia |
 |---|---|
@@ -132,6 +162,8 @@ gantt
 - [ ] La matriz de riesgos consolida los hallazgos de Infraestructura, STRIDE y Normatividad, y cubre además los dominios de Negocio y Datos/Procesos (7 dominios de riesgo de arquitectura empresarial), con columnas Riesgo, Causa, Impacto, Probabilidad, Arquitectura afectada y Mitigación.
 - [ ] Existe un plan de implementación con fases (quick win, corto, mediano y largo plazo), cada una trazada a un riesgo o brecha específico.
 - [ ] El orden de las fases considera tanto el riesgo como el esfuerzo de implementación, no solo la prioridad de riesgo.
+- [ ] El plan incluye la gestión del cambio con las personas (Paso 4.1): grupos afectados con lo que pierden o temen, resistencia esperada, comunicación y capacitación con fecha y responsable, e incluye al grupo cuyo trabajo cambia.
+- [ ] Cada fase tiene un resultado visible que comprueba alguien fuera de TI.
 - [ ] Se prepararon respuestas basadas en evidencia para al menos 3 preguntas críticas probables.
 - [ ] La presentación fue ensayada y cabe en el tiempo asignado (máximo 10 minutos).
 - [ ] Cada integrante tiene claro qué parte presenta y puede responder preguntas sobre ella.
@@ -151,6 +183,8 @@ Defina, con base en el proyecto real del equipo:
 1. **Principios Arquitectónicos** — mínimo 3, cada uno con su explicación y su justificación concreta en el proyecto (no una definición de libro sin aterrizar).
 2. **Estándares Tecnológicos** — lenguaje o framework, tipo de comunicación (REST, eventos) e infraestructura.
 3. **Decisiones Arquitectónicas (ADR)** — al menos 2 decisiones importantes ya tomadas en el proyecto, llenas con Contexto, Problema, Decisión, Alternativas y Consecuencias — no una plantilla en blanco.
+
+Los principios y estándares se entregan en `plan-gobernanza.md`; las ADR, en `procedimiento-cambios.md` (sección «Registro de decisiones»), porque ahí vive el registro que se sigue alimentando después.
 
 **Reglas de calidad (del Módulo 8, Gobierno de Arquitectura).** El gobierno no es trámite: las reglas acotan la variabilidad y por eso permiten decidir rápido. Cada artefacto tiene una prueba concreta:
 
@@ -172,7 +206,7 @@ Un *trade-off* es sacrificar conscientemente un atributo por otro más crítico 
 
 | Principio | Explicación | Justificación en el proyecto |
 |---|---|---|
-| API First | Toda integración entre sistemas (POS, e-commerce, pasarela de pago, logística) se expone y se consume mediante APIs versionadas y documentadas, en vez de acceso directo a bases de datos o archivos planos. | La brecha central del Taller 7 (inventario desincronizado) existe porque hoy POS y e-commerce se comunican vía base de datos replicada, no vía API; este principio es la precondición de la sincronización CDC (ver ADR #1). |
+| API First | Toda integración entre sistemas (POS, e-commerce, pasarela de pago, logística) se expone y se consume mediante APIs versionadas y documentadas, en vez de acceso directo a bases de datos o archivos planos. | La brecha central de FarmApp (inventario desincronizado) existe porque hoy POS y e-commerce se comunican vía base de datos replicada, no vía API; este principio es la precondición de la sincronización CDC (ver ADR #1). |
 | Security by Design | La autenticación, el cifrado y la gestión de consentimiento se incorporan desde el diseño de cada componente nuevo, no se agregan después como parche. | El Taller 5 (STRIDE) identificó la exposición de datos de pago como riesgo Alto (Paso 3); este principio evita que los nuevos componentes de sincronización repitan ese error. |
 | Cloud First / Escalabilidad | Todo componente nuevo se diseña preferentemente para la infraestructura de nube híbrida ya definida, con capacidad de escalar horizontalmente ante picos de demanda. | El Taller 4 definió la arquitectura de nube híbrida de FarmApp; este principio asegura que los componentes nuevos (gateway de integración, pipeline de CDC) la respeten en vez de crear una isla de infraestructura aparte. |
 | Loose Coupling | Los sistemas se comunican mediante interfaces y eventos bien definidos, evitando integraciones punto a punto fuertemente acopladas. | Sostiene técnicamente la decisión de reemplazar la base de datos replicada por eventos de cambio (ADR #1), reduciendo el riesgo de que un cambio en el POS rompa el e-commerce y viceversa. |
@@ -193,11 +227,11 @@ Estas 2 ADR no son hipotéticas: formalizan decisiones que ya están implícitas
 |---|---|
 | Título | Sincronización de inventario vía CDC en lugar de batch nocturno |
 | Estado | Aceptada |
-| Contexto | FarmApp sincroniza hoy el inventario entre el POS y la plataforma e-commerce mediante una base de datos replicada con corte batch (Taller 4 / Taller 7). |
+| Contexto | FarmApp sincroniza hoy el inventario entre el POS y la plataforma e-commerce mediante una base de datos replicada con corte batch (Taller 4). |
 | Problema | El retraso de varias horas entre corte y corte hace que el e-commerce muestre disponibilidad que ya no existe en tienda, generando pedidos que no se pueden despachar (riesgo "Retraso de sincronización de inventario", Paso 3, prioridad 1). |
 | Decisión | Reemplazar el batch nocturno por sincronización casi en tiempo real usando Change Data Capture (CDC) sobre la base del POS, publicando los cambios de inventario como eventos que consume el e-commerce. |
 | Alternativas consideradas | (a) Aumentar la frecuencia del batch (ej. cada 15 min): no elimina el riesgo en horas pico, solo lo reduce. (b) Reescribir el POS heredado para escritura compartida: alto costo y riesgo de romper un sistema crítico en producción. (c) CDC: menor intrusión sobre el sistema heredado y coherente con los principios API First y Loose Coupling. |
-| Consecuencias | Se requiere introducir un bus de eventos y monitoreo del pipeline de CDC; corresponde a la fase "Mediano plazo" del Plan de Implementación (Paso 4), esfuerzo Alto, responsable Plataforma. |
+| Consecuencias | (+) El e-commerce refleja el inventario real en segundos y deja de vender lo que no hay. (−) Se acepta un componente crítico nuevo que operar y monitorear (el bus de eventos y el pipeline de CDC) y consistencia eventual de algunos segundos entre POS y e-commerce. **Trade-off aceptado:** se sacrifica simplicidad operativa a cambio de consistencia casi en tiempo real. Corresponde a la fase "Mediano plazo" del Plan de Implementación (Paso 4), esfuerzo Alto, responsable Plataforma. |
 
 | Campo | ADR #2 |
 |---|---|
@@ -227,6 +261,28 @@ Defina, en 4 puntos:
 | Criterio de conformidad | Una fase se cierra solo si el arquitecto líder valida que el resultado coincide con el TO-BE del Taller 7 |
 | Escalamiento | Cualquier desviación del diseño aprobado (ej. por restricción de presupuesto) requiere aprobación escrita del comité antes de continuar |
 
+#### 6.2.1 Métricas de gobierno: cómo saber si el gobierno funciona
+
+Un comité que se reúne cada mes no prueba que el gobierno funcione. Defina **3 métricas**, cada una con estos 5 campos — sin fórmula no se calcula y sin umbral no avisa:
+
+1. **Qué mide**: atada a uno de los principios de la sección 6.0 (¿se está cumpliendo de verdad?).
+2. **Fórmula**: algo que se puede calcular, no "mejorar la integración".
+3. **Fuente que ya existe hoy**: un inventario, un registro o un sistema que el cliente ya tiene. Si la métrica necesita un sistema que no existe, todavía no se puede calcular: es un deseo con forma de fórmula.
+4. **Línea base**: el valor de hoy, calculado con los datos del AS-IS de los talleres anteriores.
+5. **Umbral**: el valor a partir del cual el comité debe actuar.
+
+**Una de las tres debe medir al propio comité.** El mayor riesgo de un sistema de gobierno es que estorbe: si el comité tarda más que el plazo del negocio, los equipos empiezan a construir por fuera de él.
+
+**Ejemplo — FarmApp:**
+
+| Métrica | Qué mide (principio) | Fórmula | Fuente que ya existe | Línea base | Umbral |
+|---|---|---|---|---|---|
+| M1 · Integraciones por API | Si se cumple **API First** | Integraciones expuestas por API versionada ÷ integraciones totales × 100 | Inventario de integraciones del tablero integrado (Taller 8; en un cliente real, también el C2 del Taller 3) | 2 de 5 = 40%: por API, e-commerce ↔ pasarela de pagos y e-commerce ↔ CRM; sin API, POS ↔ e-commerce e inventario ↔ e-commerce (BD replicada) y e-commerce ↔ logística (archivo plano) | No sube al menos 20 puntos en el semestre siguiente |
+| M2 · Flujo de pagos cifrado | Si se cumple **Security by Design** | Conexiones del flujo de pagos con TLS ÷ conexiones totales del flujo × 100 | Tabla STRIDE del flujo de pagos (en un cliente real, Taller 5) | 3 de 5 = 60% | Cualquier valor menor a 100% al cerrar la fase Corto plazo |
+| M3 · Tiempo de dictamen del comité | Si el **gobierno** estorba | Días hábiles entre la propuesta de una ADR o excepción y su dictamen | Registro de ADR del procedimiento de cambios (fechas Propuesta → Aceptada) | Se mide desde la primera solicitud | Más de 10 días hábiles |
+
+> M3 no tiene línea base porque el registro de ADR empieza a existir con este plan — dígalo así, no invente un valor. M1 y M2 sí la tienen, porque salen de vistas que el equipo ya construyó.
+
 ### 6.3 Procedimiento de Actualización y Revisión de la Arquitectura
 
 A diferencia del Plan de Implementación (que ejecuta un cambio ya decidido), este procedimiento cubre qué pasa **después**, cuando el roadmap ya se ejecutó y surge la necesidad de un cambio nuevo. Defina:
@@ -251,11 +307,13 @@ A diferencia del Plan de Implementación (que ejecuta un cambio ya decidido), es
 |---|---|
 | Título | Nombre corto de la decisión |
 | Estado | Propuesta / Aceptada / Reemplazada |
+| Fecha de propuesta | Cuándo se pidió la decisión (alimenta la métrica M3) |
+| Fecha de dictamen | Cuándo la aceptó o rechazó el comité |
 | Contexto | Qué disparó la necesidad de decidir |
 | Problema | Qué problema concreto genera no decidir, o decidir mal |
 | Decisión | Qué se decidió |
 | Alternativas consideradas | Qué otras opciones se evaluaron y por qué no se eligieron |
-| Consecuencias | Qué implica esta decisión hacia adelante |
+| Consecuencias | Qué se gana (+), qué se pierde o qué deuda se acepta (−), y el trade-off aceptado |
 
 **Checklist de estos tres documentos:**
 
@@ -267,30 +325,74 @@ A diferencia del Plan de Implementación (que ejecuta un cambio ya decidido), es
 - [ ] Cada estándar se puede rastrear hacia arriba: estándar → principio → objetivo de negocio.
 - [ ] El plan de gobernanza define quién revisa la implementación y con qué frecuencia.
 - [ ] El criterio de conformidad está trazado al TO-BE del Taller 7, no es una opinión subjetiva.
+- [ ] Hay 3 métricas de gobierno, cada una con qué mide (principio), fórmula, fuente que ya existe, línea base y umbral, y una de ellas mide al propio comité (sección 6.2.1).
 - [ ] El procedimiento de cambios define disparadores concretos, no solo "cuando sea necesario".
 - [ ] Existe un formato de ADR (o equivalente) para registrar decisiones futuras.
 - [ ] Está definida una cadencia de revisión periódica completa de la arquitectura.
 
 ---
 
-## 7. Vista ArchiMate equivalente
+## 7. Vistas ArchiMate (obligatorias en la entrega final)
 
-Cierra la cadena que empezó en el Taller 7: cada fase del Plan de Implementación (Paso 4) es un **Work Package** de la capa de Implementación y Migración (ver la [Guía de Notación ArchiMate](https://github.com/CesarAVegaF312/AREM-ArchiMate/blob/main/guia_notacion_archimate.md)) que **realiza** un Gap y produce el nuevo Plateau TO-BE.
+La entrega final incluye **dos vistas ArchiMate** en `entrega/vistas-finales/`: la de **Implementación y Migración** (7.1) y la de **Motivación** (7.2). Pueden construirse en Archi o en draw.io con la biblioteca "ArchiMate 3"; en ambos casos se entrega también una imagen PNG. No se presentan necesariamente en los 10 minutos: son anexos que el panel puede consultar.
+
+### 7.1 Vista de Implementación y Migración
+
+Cierra la cadena que empezó en el Taller 7: cada fase del Plan de Implementación (Paso 4) es un **Work Package** de la capa de Implementación y Migración (ver la [Guía de Notación ArchiMate](https://github.com/CesarAVegaF312/AREM-ArchiMate/blob/main/guia_notacion_archimate.md)) asociado al Gap que resuelve, y que **realiza** el nuevo Plateau TO-BE. En ArchiMate el Gap solo se **asocia**: con los dos Plateaus que separa y con el Work Package que lo cierra.
 
 ```mermaid
 flowchart LR
+    asis["Plateau: FarmApp AS-IS"]
     gap(["Gap: sincronización de inventario"])
     wp["Work Package: Sincronización CDC POS-Ecommerce"]
     tobe["Plateau: FarmApp TO-BE"]
 
-    gap -->|"es resuelto por"| wp
-    wp -->|"produce"| tobe
+    asis ---|"asociación"| gap
+    gap ---|"asociación"| tobe
+    wp ---|"cierra (asociación)"| gap
+    wp -.->|"realiza"| tobe
 
     classDef migracion fill:#ffcc99,color:#000,stroke:#cc6600;
-    class gap,wp,tobe migracion
+    class asis,gap,wp,tobe migracion
 ```
 
 Los Principios Arquitectónicos (sección 6.0) también tienen su lugar en ArchiMate: son los `Principle` que restringen y orientan cada `Work Package`, y las ADR resueltas documentan por qué se eligió una realización concreta del Gap y no otra. El Plan de Gobernanza (sección 6.2) y el Procedimiento de Cambios (sección 6.3) también tienen su lugar en ArchiMate: el primero define quién valida que cada `Work Package` efectivamente produce el `Plateau` esperado; el segundo describe el proceso para, más adelante, abrir un nuevo ciclo Constraint/Requirement → Gap → Work Package cuando surja una necesidad de cambio no prevista en este semestre.
+
+En la vista del cliente real debe aparecer **una fila del plan de implementación = un Work Package**, cada uno asociado al Gap de la matriz de brechas del Taller 7 que cierra, y todos realizando el Plateau TO-BE (opcionalmente, Plateaus intermedios si una fase deja la arquitectura en un estado estable propio).
+
+### 7.2 Vista de Motivación
+
+Muestra el «porqué» de toda la propuesta, en la misma escalera de la sección 6.0 (estrategia → principios → estándares → decisiones):
+
+```mermaid
+flowchart LR
+    driver(["Driver: inventario desincronizado genera pedidos fallidos"])
+    goal(["Goal: no perder ventas por falta de stock real"])
+    principle(["Principle: API First"])
+    req(["Requirement: sincronización de inventario casi en tiempo real"])
+    wp["Work Package: Sincronización CDC POS-Ecommerce"]
+
+    driver -.->|"influye en"| goal
+    principle -->|"realiza"| goal
+    req -->|"realiza"| principle
+    req -->|"realiza"| goal
+    wp -->|"realiza"| req
+
+    classDef motivacion fill:#ccccff,color:#000,stroke:#6666cc;
+    classDef migracion fill:#ffcc99,color:#000,stroke:#cc6600;
+    class driver,goal,principle,req motivacion
+    class wp migracion
+```
+
+En la vista del cliente real: los `Driver` y `Goal` salen de los problemas y objetivos estratégicos de la Ficha de Caracterización (Taller 0); los `Principle` son los de la sección 6.0; los `Requirement` y `Constraint` salen de las brechas de los Talleres 5-7. Cada `Goal` debe quedar realizado por al menos un `Requirement`, y cada `Requirement` por al menos un `Work Package` de la vista 7.1 — un objetivo del cliente sin nada que lo realice es justo la pregunta que el panel va a hacer.
+
+**Checklist de las vistas ArchiMate:**
+
+- [ ] Existen las dos vistas (Motivación y Migración) en `entrega/vistas-finales/`, con su PNG.
+- [ ] Cada fase del plan de implementación aparece como un Work Package que resuelve un Gap del Taller 7.
+- [ ] Cada Goal del cliente (Ficha, Taller 0) está realizado por al menos un Requirement, y cada Requirement por un Work Package.
+- [ ] Los Principles de la vista son los mismos del plan de gobernanza (sección 6.0).
+- [ ] Se usan los elementos y relaciones de la [Guía de Notación ArchiMate](https://github.com/CesarAVegaF312/AREM-ArchiMate/blob/main/guia_notacion_archimate.md), con el color de cada capa.
 
 ---
 

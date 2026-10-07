@@ -38,7 +38,9 @@ Describir brevemente el propósito del trabajo realizado con el cliente, los ret
 | Mediano plazo | | |
 | Largo plazo | | |
 
-_Ver el detalle completo, con la relación de cada fase a los riesgos identificados en el curso, en [`entrega/plan-implementacion.md`](../plantillas/plantilla_plan_implementacion.md)._
+_Ver el detalle completo, con la relación de cada fase a los riesgos identificados en el curso, en [`09-presentacion-final/plan-implementacion.md`](09-presentacion-final/plan-implementacion.md)._
+
+<!-- Este enlace asume que el resumen está en la raíz del repositorio del proyecto (AREM-EquipoX-NombreCliente). Si lo deja dentro de 09-presentacion-final/, cámbielo a (plan-implementacion.md). -->
 
 ## Reflexión Final
 

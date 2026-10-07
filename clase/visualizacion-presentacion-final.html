@@ -145,7 +145,7 @@
   <section class="hero">
     <p class="ref">Universidad de La Sabana · Arquitectura Empresarial</p>
     <h1>Diez minutos para defender ocho talleres de trabajo.</h1>
-    <p class="lede">El Taller 9 no construye una vista nueva: selecciona y condensa todo el trabajo hecho para el cliente real — FarmApp — en una narrativa de 4 actos, una matriz de riesgos de 7 dominios, un plan de implementación por fases y un marco de gobernanza. Esta hoja recorre esa síntesis con el mismo contenido de la guía paso a paso, listo para ensayar la defensa ante el panel.</p>
+    <p class="lede">El Taller 9 no construye una vista nueva: selecciona y condensa todo el trabajo hecho para el cliente real — FarmApp — en una narrativa de 4 actos, una matriz de riesgos de 7 dominios, un plan de implementación por fases y un marco de gobernanza. Esta hoja recorre el pitch, la matriz de riesgos, la defensa y la gobernanza de la guía paso a paso, para ensayar ante el panel. El plan de implementación con su gestión del cambio, las métricas de gobierno y las vistas ArchiMate están solo en la guía (Paso 4, sección 6.2.1 y sección 7).</p>
   </section>
 
   <!-- ============ PITCH: 4 ACTOS ============ -->
@@ -206,7 +206,7 @@
     <div class="sheet-inner">
       <p class="ref">04 · Consolidado, no repetido desde cero</p>
       <h2>Matriz de riesgos arquitectónicos — 7 dominios</h2>
-      <p class="lede" style="margin-bottom:18px">Los primeros cuatro riesgos consolidan hallazgos ya identificados en Infraestructura (Taller 4), Seguridad/STRIDE (Taller 5) y Gobierno TI/Normatividad (Taller 6); los dos últimos formalizan riesgos de Negocio y de Datos/Procesos que un análisis puramente técnico suele dejar por fuera.</p>
+      <p class="lede" style="margin-bottom:18px">Las filas están ordenadas por prioridad. Cuatro riesgos consolidan hallazgos ya identificados en Infraestructura (Taller 4), Seguridad/STRIDE (Taller 5) y Gobierno TI/Normatividad (Taller 6); los otros dos formalizan riesgos de Datos/Procesos y de Negocio que un análisis puramente técnico suele dejar por fuera.</p>
 
       <div class="tablewrap">
         <table class="matrix">
@@ -274,7 +274,7 @@
     <div class="sheet-inner">
       <p class="ref">05 · Quién lo supervisa y qué pasa después</p>
       <h2>Decisiones ya tomadas (ADR) y gobernanza de la implementación</h2>
-      <p class="lede" style="margin-bottom:18px">Ver también la <a href="clase/guia_paso_a_paso_presentacion.md#6-documentos-adicionales-gobernanza-y-gestión-de-cambios">guía paso a paso, sección 6</a>. Estos documentos no son un quinto acto del pitch — se entregan como anexos que el comité puede consultar. Las dos ADR siguientes formalizan decisiones que ya están implícitas en el plan de implementación del Acto 4.</p>
+      <p class="lede" style="margin-bottom:18px">Ver también la <a href="guia_paso_a_paso_presentacion.md#6-documentos-adicionales-gobernanza-y-gestión-de-cambios">guía paso a paso, sección 6</a>. Estos documentos no son un quinto acto del pitch — se entregan como anexos que el comité puede consultar. Las dos ADR siguientes formalizan decisiones que ya están implícitas en el plan de implementación del Acto 4.</p>
 
       <div class="cols c2" style="margin-bottom:28px">
         <div class="adr">
@@ -363,7 +363,7 @@ const ACTS = [
    src:"Se alimenta de Taller 7 (Opportunities & Solutions: TO-BE y brechas) y Taller 8 (integración de vistas). Evidencia a mostrar: la nueva conexión propuesta entre POS y e-commerce en el tablero integrado (Taller 8)."},
   {n:"Acto 4", t:"Plan de Implementación",
    q:"¿Cómo y en qué orden se llega de lo actual a lo propuesto?",
-   c:"La solución se ejecuta en 4 fases, empezando por el ajuste de consentimiento legal (bajo esfuerzo, corrige una brecha de cumplimiento) y terminando por la redundancia del balanceador (mayor esfuerzo, menor probabilidad de ocurrencia).",
+   c:"La solución se ejecuta en 4 fases, empezando por el ajuste de consentimiento legal (bajo esfuerzo, corrige una brecha de cumplimiento) y terminando por la redundancia del balanceador (esfuerzo medio, pero el riesgo de menor probabilidad).",
    src:"Se alimenta de los riesgos priorizados (matriz de 7 dominios) y de la solución del Acto 3. Evidencia a mostrar: el roadmap de fases con su línea de tiempo (quick win → corto → mediano → largo plazo)."}
 ];
 
