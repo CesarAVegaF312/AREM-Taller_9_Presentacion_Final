@@ -10,7 +10,7 @@ Presentar la solución arquitectónica final del cliente real ante un panel simu
 
 Antes de preparar la presentación, revise la [**Guía Paso a Paso: Simulación de Comité de Arquitectura**](clase/guia_paso_a_paso_presentacion.md). Incluye de qué taller se alimenta cada parte de la narrativa, la metodología de 6 pasos para pasar de todo el trabajo del curso a una presentación de 10 minutos defendible (incluyendo cómo construir el plan de implementación), un ejemplo completo (narrativa, matriz de riesgos, roadmap y preguntas anticipadas) sobre el caso de FarmApp, y una tabla de errores comunes.
 
-La presentación de la clase está en [`8. Gobierno_Arquitectura.pptx`](8.%20Gobierno_Arquitectura.pptx) (versión para estudiantes, sin notas del orador).
+La presentación de la clase está en [`9. Gobierno_Arquitectura.pptx`](9.%20Gobierno_Arquitectura.pptx) (versión para estudiantes, sin notas del orador).
 
 ### Versión visual: Hoja de cierre y gobernanza
 
