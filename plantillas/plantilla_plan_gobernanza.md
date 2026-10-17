@@ -14,13 +14,19 @@ Explique en 2-3 líneas quién supervisa la ejecución del Plan de Implementaci�
 
 ## Principios Arquitectónicos
 
-Defina mínimo 3 principios que orientan las decisiones de diseño del proyecto. No copie definiciones de manual: explique qué significa cada uno para este proyecto específico y por qué se adoptó (ej. API First, Security by Design, Loose Coupling, Cloud First / Escalabilidad, u otros pertinentes a su cliente real).
+Parta del borrador de 3 principios de la Visión del Taller 0 (`00-preliminary-vision/vision.md`). Para cada uno diga si se confirma, se reescribe o se retira, con la evidencia de los Talleres 1 a 8, y agregue los que el proyecto necesitó. Mínimo 3 al final. No copie definiciones de manual: cada principio debe permitir decir «no» a algo concreto de este proyecto (ej. API First, Security by Design, Loose Coupling, Cloud First / Escalabilidad, u otros pertinentes a su cliente real).
 
-| Principio | Explicación | Justificación en el proyecto |
-|---|---|---|
-| | | |
-| | | |
-| | | |
+| Principio | Declaración | Implicación (qué descarta) | Justificación en el proyecto (evidencia de los talleres) | Estado frente al Taller 0 (confirmado / reescrito / nuevo) |
+|---|---|---|---|---|
+| | | | | |
+| | | | | |
+| | | | | |
+
+Principios del borrador del Taller 0 que se retiran, y por qué:
+
+| Principio retirado | Qué evidencia lo contradijo |
+|---|---|
+| | |
 
 ## Estándares Tecnológicos
 

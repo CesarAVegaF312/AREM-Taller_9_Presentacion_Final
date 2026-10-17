@@ -183,7 +183,7 @@ Antes de definir quién gobierna la ejecución (6.2) o cómo se gestionan cambio
 
 Defina, con base en el proyecto real del equipo:
 
-1. **Principios Arquitectónicos** — mínimo 3, cada uno con su explicación y su justificación concreta en el proyecto (no una definición de libro sin aterrizar).
+1. **Principios Arquitectónicos** — parta del borrador de 3 principios que escribió en la Visión del Taller 0. Para cada uno diga si se **confirma**, se **reescribe** o se **retira**, con la evidencia de los Talleres 1 a 8 que lo sostiene o lo contradijo, y agregue los que el proyecto necesitó y no estaban (por ejemplo, uno de seguridad que salió del Taller 5). Mínimo 3 al final, cada uno con nombre, declaración, implicación y justificación concreta en el proyecto (no una definición de libro sin aterrizar). Un principio que se retira también se registra: el comité necesita saber qué regla dejó de aplicar y por qué.
 2. **Estándares Tecnológicos** — lenguaje o framework, tipo de comunicación (REST, eventos) e infraestructura.
 3. **Decisiones Arquitectónicas (ADR)** — al menos 2 decisiones importantes ya tomadas en el proyecto, llenas con Contexto, Problema, Decisión, Alternativas y Consecuencias — no una plantilla en blanco.
 
