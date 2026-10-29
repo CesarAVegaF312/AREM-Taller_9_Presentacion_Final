@@ -10,13 +10,11 @@ Presentar la solución arquitectónica final del cliente real ante un panel simu
 
 Antes de preparar la presentación, revise la [**Guía Paso a Paso: Simulación de Comité de Arquitectura**](clase/guia_paso_a_paso_presentacion.md). Incluye de qué taller se alimenta cada parte de la narrativa, la metodología de 6 pasos para pasar de todo el trabajo del curso a una presentación de 10 minutos defendible (incluyendo cómo construir el plan de implementación), un ejemplo completo (narrativa, matriz de riesgos, roadmap y preguntas anticipadas) sobre el caso de FarmApp, y una tabla de errores comunes.
 
-La presentación de la clase está en [`8. Gobierno_Arquitectura.pptx`](8.%20Gobierno_Arquitectura.pptx) (versión para estudiantes, sin notas del orador).
+La presentación de la clase está en [`9. Gobierno_Arquitectura.pptx`](9.%20Gobierno_Arquitectura.pptx) (versión para estudiantes, sin notas del orador).
 
 ### Versión visual: Hoja de cierre y gobernanza
 
-[`clase/visualizacion-presentacion-final.html`](clase/visualizacion-presentacion-final.html) es una página interactiva autocontenida sobre el ejemplo guiado de FarmApp: una cadena clickeable con los 4 actos del pitch (Problema/Análisis/Solución/Plan de Implementación) mostrando de qué taller sale la evidencia de cada uno, otra cadena con las 3 preguntas de defensa anticipadas (pregunta/evidencia/respuesta), los 4 principios arquitectónicos y las 2 ADR reales (sincronización CDC y balanceador redundante), y la matriz de riesgos de 7 dominios junto con el plan de gobernanza y el procedimiento de actualización. GitHub no la renderiza interactiva desde la vista de archivo; para verla:
-- Descargue el archivo y ábralo con doble clic (funciona sin conexión, es HTML plano), o
-- Pegue esta URL en [htmlpreview.github.io](https://htmlpreview.github.io/): `https://raw.githubusercontent.com/CesarAVegaF312/AREM-Taller_9_Presentacion_Final/main/clase/visualizacion-presentacion-final.html`
+[`clase/visualizacion-presentacion-final.html`](clase/visualizacion-presentacion-final.html) es una página interactiva autocontenida sobre el ejemplo guiado de FarmApp: una cadena clickeable con los 4 actos del pitch (Problema/Análisis/Solución/Plan de Implementación) mostrando de qué taller sale la evidencia de cada uno, otra cadena con las 3 preguntas de defensa anticipadas (pregunta/evidencia/respuesta), los 4 principios arquitectónicos y las 2 ADR reales (sincronización CDC y balanceador redundante), y la matriz de riesgos de 7 dominios junto con el plan de gobernanza y el procedimiento de actualización. Ábrala directamente en el navegador: **[ver la página interactiva](https://cesaravegaf312.github.io/AREM-Taller_9_Presentacion_Final/clase/visualizacion-presentacion-final.html)**. También puede descargar el archivo y abrirlo con doble clic; funciona sin conexión.
 
 ## Contexto del Taller
 
