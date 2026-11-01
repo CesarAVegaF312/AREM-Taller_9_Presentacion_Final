@@ -399,4 +399,107 @@ En la vista del cliente real: los `Driver` y `Goal` salen de los problemas y obj
 
 ---
 
+## 8. Validación técnica: gobierno como código (opcional)
+
+El plan de gobernanza (6.2) dice quién aprueba los cambios y con qué criterio, y el procedimiento de cambios (6.3) dice que toda decisión queda en una ADR. Pero si cualquier integrante puede escribir directamente en la rama principal del repositorio, ese gobierno es solo una promesa. Esta sección propone **comprobarlo**: convertir las reglas del plan en reglas que GitHub hace cumplir sobre el repositorio del equipo, y verificar que de verdad bloquean lo que deben bloquear.
+
+No es un ejercicio de programación: los archivos ya están listos en [`validacion-tecnica/repo-equipo/`](validacion-tecnica/repo-equipo/) y solo se copian al repositorio del equipo.
+
+### 8.1 Qué se necesita
+
+- El repositorio del proyecto del equipo (`AREM-EquipoX-NombreCliente`) en GitHub, con al menos un integrante como administrador.
+- Opcional, para probar en el computador: Python 3 (en Windows, use `python` en lugar de `python3`).
+
+> La protección de ramas es gratuita en repositorios públicos. En repositorios privados requiere GitHub Pro, Team o Enterprise; GitHub Pro viene incluido en el GitHub Student Developer Pack.
+
+### 8.2 Del plan de gobernanza al repositorio
+
+| En el plan de gobernanza y el procedimiento de cambios | En el repositorio del equipo |
+|---|---|
+| Quién aprueba (Comité de Arquitectura, 6.2) | [`CODEOWNERS`](validacion-tecnica/repo-equipo/.github/CODEOWNERS): cada carpeta tiene un responsable cuya aprobación es obligatoria |
+| Criterio de conformidad y disparadores de cambio (6.2 y 6.3) | [Plantilla de pull request](validacion-tecnica/repo-equipo/.github/pull_request_template.md): todo cambio declara su disparador, su ADR, el principio que lo respalda y el riesgo que atiende |
+| Reglas de calidad de una ADR (6.0) | [`verificar_gobierno.py adr`](validacion-tecnica/repo-equipo/scripts/verificar_gobierno.py): revisa que cada ADR tenga todos sus campos, alternativas descartadas y al menos una consecuencia negativa |
+| "Toda decisión de arquitectura queda registrada" (6.3) | `verificar_gobierno.py pr`: un cambio a la arquitectura objetivo (`to-be-*` del Taller 7, vistas finales, plan de gobernanza) debe modificar también el registro de decisiones |
+| Métrica M3, tiempo de dictamen del comité (6.2.1) | El mismo script la calcula desde las fechas de propuesta y dictamen de cada ADR |
+| Nadie cambia la arquitectura aprobada sin pasar por el comité | Protección de la rama `main` y el [workflow](validacion-tecnica/repo-equipo/.github/workflows/verificar-gobierno.yml) que corre las dos verificaciones en cada pull request |
+
+### 8.3 Probar las verificaciones en el computador
+
+Desde la carpeta `clase/validacion-tecnica/`:
+
+```bash
+python3 repo-equipo/scripts/verificar_gobierno.py adr ejemplo-farmapp/procedimiento-cambios.md
+python3 repo-equipo/scripts/verificar_gobierno.py adr ../../plantillas/plantilla_procedimiento_cambios.md
+```
+
+El primer comando revisa el [registro de ejemplo de FarmApp](validacion-tecnica/ejemplo-farmapp/procedimiento-cambios.md) (las dos ADR de la sección 6.0 y una tercera todavía sin dictamen): las tres cumplen las reglas, y el script calcula M3 para cada una. La ADR #2 tardó 13 días hábiles, más que el umbral de 10 del ejemplo de la sección 6.2.1: la métrica avisa que el comité debe revisar su proceso. El segundo comando revisa la plantilla en blanco y falla, campo por campo: es justo el error que el comité va a buscar, una ADR que es "una plantilla en blanco".
+
+El conteo de días hábiles va de lunes a viernes y no descuenta festivos.
+
+### 8.4 Activarlo en el repositorio del equipo
+
+1. Copie el contenido de `validacion-tecnica/repo-equipo/` (incluida la carpeta oculta `.github/`) a la raíz del repositorio del equipo. En `CODEOWNERS`, reemplace los usuarios de ejemplo por los usuarios de GitHub reales del comité definido en `plan-gobernanza.md`. Si sus carpetas tienen otros nombres, ajuste las rutas al inicio de `verificar_gobierno.py`. Suba estos archivos a `main` **antes** de proteger la rama.
+2. En GitHub, en *Settings → Branches* (o *Settings → Rules → Rulesets*), cree una regla para `main` que exija: un pull request antes de fusionar, al menos una aprobación, la revisión de los propietarios del código (*Code Owners*) y que pase la verificación `verificar` (aparece en la lista después de que el workflow corre por primera vez en un pull request). Los nombres de las opciones pueden variar un poco según la versión de GitHub.
+3. Haga los experimentos:
+
+| # | Experimento | Resultado esperado |
+|---|---|---|
+| E1 | Un integrante hace `git push origin main` con un cambio cualquiera | GitHub rechaza el push con un error `GH006: Protected branch update failed` (o `GH013: Repository rule violations found` si usó *Rulesets*): los cambios deben entrar por pull request |
+| E2 | Un pull request cambia un archivo `07-opportunities-solutions/to-be-*` sin tocar `procedimiento-cambios.md` | La verificación `verificar` falla en el paso "Cambio de arquitectura con su ADR" y el botón de fusión queda bloqueado |
+| E3 | Al mismo pull request se le agrega la ADR completa en `procedimiento-cambios.md` | La verificación pasa, pero la fusión sigue esperando la aprobación del responsable definido en `CODEOWNERS` |
+| E4 | Un pull request agrega una ADR con campos vacíos o sin consecuencias negativas | Falla el paso "Registro de decisiones completo" y el mensaje dice qué falta |
+
+4. En `plan-gobernanza.md`, en el mecanismo de gobierno, indique que estas reglas están activas y agregue como evidencia las capturas de E1 y E2. Si usa la métrica M3, tome su valor de la salida del script.
+
+> La verificación automática revisa la **forma**, no el **fondo**: una ADR completa puede registrar una mala decisión. Por eso la regla exige además la aprobación de una persona del comité. Ningún control debería ser el único (ver el caso de la sección 9).
+
+---
+
+## 9. Análisis de caso real y panorama tecnológico (opcional)
+
+### 9.1 Caso: la actualización de CrowdStrike que bloqueó millones de equipos Windows (19 de julio de 2024)
+
+**Qué pasó.** El 19 de julio de 2024, a las 04:09 UTC, CrowdStrike distribuyó una actualización de contenido de respuesta rápida (el "archivo de canal 291") para su sensor de seguridad Falcon en Windows. El contenido tenía un defecto que el validador automático de CrowdStrike no detectó. Al cargarlo, el sensor hizo una lectura de memoria fuera de límites y Windows se bloqueó en los equipos que recibieron la actualización; los equipos Mac y Linux no se afectaron. Microsoft estimó que el incidente afectó unos 8,5 millones de equipos Windows, menos del 1% del total.
+
+En su revisión preliminar del incidente, CrowdStrike se comprometió a tres cambios para este tipo de contenido: desplegarlo de forma escalonada, empezando por un grupo pequeño de equipos (despliegue *canary*); monitorear el comportamiento de los equipos durante el despliegue, y dar a los clientes control sobre cuándo y dónde se aplican estas actualizaciones. El análisis de causa raíz completo se publicó el 6 de agosto de 2024. Las fuentes no coinciden en la fecha de la revisión preliminar (23 o 24 de julio).
+
+**Qué falló, en el lenguaje de este taller.**
+
+| Elemento del gobierno | Qué falló |
+|---|---|
+| Procedimiento de cambios (6.3) | El contenido llegó a todos los equipos a la vez: no había fases (primero un grupo piloto, después el resto) que contuvieran la falla |
+| Criterio de conformidad (6.2) | El control automático aprobó un contenido defectuoso, y no hubo una segunda barrera que lo detectara antes de llegar a todos los clientes |
+| Escalamiento y control del cliente | Los clientes no podían decidir cuándo recibir este tipo de actualización; CrowdStrike se comprometió a darles ese control después del incidente |
+
+**Relación con la validación técnica.** La verificación automática de la sección 8 también es un control que puede fallar o quedar mal configurado. Por eso la protección de la rama exige, además, la aprobación de una persona del comité. Y la ADR #3 del [ejemplo de FarmApp](validacion-tecnica/ejemplo-farmapp/procedimiento-cambios.md) (despliegue escalonado de las actualizaciones del POS) es la misma lección aplicada a un cliente del curso.
+
+**Preguntas para el análisis.**
+
+1. Revise el plan de implementación (Paso 4). ¿Alguna fase se aplica a todo el cliente a la vez? ¿Cómo se volvería escalonada, y qué costo tendría hacerlo?
+2. El defecto vino de un proveedor que el cliente no controlaba. ¿Qué disparador de cambio de la sección 6.3 cubriría un incidente así en su cliente real, y quién lo atendería?
+3. Escriba una métrica de gobierno con los 5 campos de la sección 6.2.1 que habría avisado del riesgo antes del incidente (por ejemplo, el porcentaje de cambios que pasan primero por un grupo piloto).
+
+**Fuentes.** [CrowdStrike, revisión preliminar del incidente](https://www.crowdstrike.com/en-us/blog/falcon-content-update-preliminary-post-incident-report/); [CrowdStrike, análisis de causa raíz del archivo de canal 291](https://www.crowdstrike.com/en-us/blog/channel-file-291-rca-available/); [CISA, alerta del 19 de julio de 2024](https://www.cisa.gov/news-events/alerts/2024/07/19/widespread-it-outage-due-crowdstrike-update).
+
+### 9.2 Panorama tecnológico: herramientas de gobierno y gestión del cambio
+
+| Necesidad | Tecnologías | Conviene cuando | Costo o riesgo |
+|---|---|---|---|
+| Control de cambios sobre documentos y código | Protección de ramas y revisión de pull requests en GitHub, GitLab o Azure DevOps; archivos `CODEOWNERS` | El equipo versiona su arquitectura en un repositorio (sección 8) | Exige disciplina para no saltarse la regla; en GitHub, los repositorios privados necesitan un plan pago |
+| Registro de decisiones | ADR en Markdown dentro del repositorio; herramientas como adr-tools o Log4brains para numerarlas y publicarlas | Hay decisiones difíciles o costosas de revertir | Si se escribe una ADR para todo, el registro se vuelve trámite y nadie lo lee |
+| Verificación automática | GitHub Actions, GitLab CI/CD, Azure Pipelines | Hay reglas objetivas que se pueden revisar sin criterio humano (que exista la ADR, que pasen las pruebas) | Revisa la forma, no el criterio; un control automático defectuoso da una falsa tranquilidad (caso CrowdStrike) |
+| Despliegue escalonado | Despliegues *canary* o por anillos; *feature flags* con LaunchDarkly, Unleash o Flagsmith | El cambio llega a muchos usuarios, equipos o sedes (caso CrowdStrike) | Más complejidad operativa: conviven dos versiones durante un tiempo |
+| Gestión de servicios y comité de cambios (ITSM) | ServiceNow, Jira Service Management, GLPI (código abierto) | La organización ya tiene mesa de servicio y un comité de cambios al estilo ITIL | Costo de licencias; un comité lento empuja a los equipos a cambiar por fuera de él (métrica M3) |
+| Portafolio y arquitectura empresarial | SAP LeanIX, Ardoq, Bizzdesign, Sparx Enterprise Architect; en pequeño, Archi más el repositorio | Hay que seguir el roadmap y el inventario de aplicaciones de toda la organización | Mantener el inventario al día cuesta esfuerzo; un repositorio desactualizado engaña al comité |
+
+La pregunta de arquitectura no es qué herramienta es mejor, sino cuál encaja con el tamaño y la madurez del cliente. Un cliente pequeño puede gobernar bien con un repositorio protegido y ADR; imponerle un ITSM corporativo puede hacer que el gobierno estorbe.
+
+### 9.3 Aplicarlo al cliente real
+
+1. Busque un caso público y documentado de un cambio que salió mal o de una falla de gobierno en el sector del cliente, o con uno de sus proveedores.
+2. Analícelo con la [plantilla de análisis de caso](../plantillas/plantilla_analisis_caso.md) y guárdelo en `entrega/analisis-caso.md` (en el repositorio del equipo, `09-presentacion-final/analisis-caso.md`).
+3. En la sección 5 de la plantilla, compare dos tecnologías del panorama anterior para el mecanismo de gobierno de su plan (por ejemplo, el repositorio protegido de la sección 8 frente a la herramienta de gestión de servicios que el cliente ya tenga).
+
+---
+
 _Esta guía hace parte del Taller 9 de Simulación de Comité de Arquitectura — curso Arquitectura Empresarial, Universidad de La Sabana._

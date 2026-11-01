@@ -1,0 +1,14 @@
+# Quién debe aprobar cada parte del repositorio del equipo (Taller 9).
+# Reemplace los usuarios por los usuarios de GitHub reales del comité de arquitectura
+# definido en plan-gobernanza.md. Deben tener permiso de escritura en el repositorio.
+# La protección de la rama main debe exigir "revisión de los propietarios del código".
+
+# Arquitectura objetivo (TO-BE): la aprueba el arquitecto líder.
+/07-opportunities-solutions/   @usuario-arquitecto-lider
+
+# Gobierno, cambios y vistas finales: arquitecto líder y representante de seguridad.
+/09-presentacion-final/        @usuario-arquitecto-lider @usuario-representante-seguridad
+
+# Las propias reglas de gobierno también se gobiernan.
+/.github/                      @usuario-arquitecto-lider
+/scripts/                      @usuario-arquitecto-lider
