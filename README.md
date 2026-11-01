@@ -69,6 +69,14 @@ La presentación es el **sábado 14/11** (ver [Sustentación final y evaluación
 
 ---
 
+## Validación técnica, análisis de casos y tecnología (opcional)
+
+Para comprobar que el plan de gobernanza se cumple de verdad, el equipo puede convertirlo en reglas que GitHub hace cumplir sobre su repositorio: la rama principal protegida, un responsable por carpeta (`CODEOWNERS`), una plantilla de pull request y una verificación automática que exige una ADR completa para cada cambio de arquitectura y calcula la métrica de tiempo de dictamen del comité. Después se comprueba con experimentos, por ejemplo que un push directo a la rama principal es rechazado. No es un ejercicio de programación: los archivos ya están listos en [`clase/validacion-tecnica/`](clase/validacion-tecnica/) y solo se copian al repositorio del equipo. El procedimiento está en la [sección 8 de la guía paso a paso](clase/guia_paso_a_paso_presentacion.md#8-validación-técnica-gobierno-como-código-opcional).
+
+**Análisis de caso real y tecnología.** La [sección 9 de la guía](clase/guia_paso_a_paso_presentacion.md#9-análisis-de-caso-real-y-panorama-tecnológico-opcional) analiza la actualización de CrowdStrike que en julio de 2024 bloqueó millones de equipos Windows al llegar a todos a la vez, y presenta el panorama de herramientas de gobierno y gestión del cambio (protección de ramas, ADR, verificación automática, despliegue escalonado, ITSM y portafolio). El equipo analiza un caso del sector de su cliente con la [plantilla de análisis de caso](plantillas/plantilla_analisis_caso.md) en `entrega/analisis-caso.md`.
+
+---
+
 ## Estructura esperada del repositorio
 
 ```text

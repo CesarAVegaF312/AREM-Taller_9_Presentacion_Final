@@ -1,0 +1,23 @@
+# Verificación automática de gobierno de arquitectura (Taller 9).
+# Corre en cada pull request hacia main del repositorio del equipo.
+# Para que bloquee la fusión, márquelo como "status check" obligatorio en la
+# protección de la rama main (sección 8.4 de la guía del Taller 9).
+name: Verificar gobierno de arquitectura
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  verificar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0   # trae el historial para comparar contra main
+
+      - name: Registro de decisiones completo
+        run: python3 scripts/verificar_gobierno.py adr 09-presentacion-final/procedimiento-cambios.md
+
+      - name: Cambio de arquitectura con su ADR
+        run: python3 scripts/verificar_gobierno.py pr origin/${{ github.base_ref }}
