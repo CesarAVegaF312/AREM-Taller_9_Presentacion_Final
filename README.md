@@ -93,6 +93,7 @@ taller-09-presentacion-final/
 │   ├── plan-gobernanza.md                 # Ver plantillas/plantilla_plan_gobernanza.md
 │   ├── procedimiento-cambios.md           # Ver plantillas/plantilla_procedimiento_cambios.md
 │   ├── retroalimentacion-cliente.md       # Ver plantillas/plantilla_retroalimentacion_cliente.md (firmada)
+│   ├── analisis-caso.md                   # Opcional: ver plantillas/plantilla_analisis_caso.md
 │   ├── vistas-finales/                    # carpeta con diagramas consolidados
 │   │   ├── archimate-motivacion.(archimate|drawio) + .png
 │   │   └── archimate-migracion.(archimate|drawio) + .png
@@ -108,6 +109,7 @@ taller-09-presentacion-final/
     ├── plantilla_procedimiento_cambios.md
     ├── plantilla_retroalimentacion_cliente.md
     ├── plantilla_coevaluacion.md          # Se envía privada por Aula Virtual, no se sube al repo
+    ├── plantilla_analisis_caso.md
     └── plantilla_reflexion_integrante1.md
 ```
 
